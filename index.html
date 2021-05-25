@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-​
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-----------フォント設定用 ------------>
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'aqu2xte',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+    <!-----------フォント設定用 ------------>
+    <!-----------FontAweson設定用 ------------>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <!-----------FontAweson設定用 ------------>
+
     <title>Document</title>
 </head>
 ​
@@ -24,19 +41,29 @@
 <body>
 
 
-
-    <h1>名前：○○○○</h1>
-    <h2 class="health">健康</h2>
+<div class="header">
+    <div class="header_left">
+        <div class="続柄">母</div>
+        <div class="名前">えいこ</div>
+        <div class="評価"><img src="../Family/img/5.svg" width="32" height="32"></div>
+        <div class="年齢">４１歳</div>
+    </div>
+    <div class="header_right">
+        <div class="カレンダー"><i class="far fa-calendar-alt fa-2x"></i></div>
+        <div class="掲示板"><i class="far fa-comment-dots fa-2x"></i></div>
+    </div>
+</div>
+<h2 class="health" id="大項目">健康</h2>
     ​
     <!-- BMIここから -->
-    <dl class="bmi">
+    <div class="bmi">
         <form name="qForm" id="qForm" onsubmit="check(); return false;">
-            <dl>
+            <div>
                 <dt>身長</dt>
                 <dd><input type="number" name="height" id="height" required> cm</dd>
                 <dt>体重</dt>
                 <dd><input type="number" name="weight" id="weight" required> kg</dd>
-            </dl>
+            </div>
             <input type="submit" value="チェック">
         </form>
         <div id="result"></div>
@@ -140,8 +167,7 @@
                 <option value="2" selected>楽しんでいる</option>
                 <option value="3">あまり楽しめてない</option>
                 <option value="4">ほとんど楽しめてない</option>
-                </select>
-            </form>
+
     
         <!-- 大人1人目終わり -->
 
@@ -457,6 +483,7 @@
 
     <!-- 子供2人目診断ここまで -->
 
+
         ​
         <!-- 松尾追加 ↓↓↓↓↓ -->
         <button id="save" type="button">save</button>
@@ -494,14 +521,14 @@
                     result = "肥満（４度）高度肥満";
                 }
 
-                let html = "<dl>";
+                let html = "<div>";
                 html += "<dt>BMI</dt>";
                 html += "<dd>" + bmi + "</dd>";
                 html += "<dt>判定</dt>";
                 html += "<dd>" + result + "</dd>";
                 html += "<dt>標準体重</dt>";
                 html += "<dd>" + right_weight + " kg</dd>";
-                html += "</dl>";
+                html += "</div>";
                 //idがresultの部分にhtmlを表示
                 document.getElementById("result").innerHTML = html;
             }

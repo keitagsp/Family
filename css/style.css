@@ -12,21 +12,21 @@ font-weight: 700;
 font-style: normal;
 */
 
-
 html{
 width: 100%;
 }
 
 body{
 background: url(../img/back.jpg);
-background-position: left top;
+background-attachment: fixed;
+background-size: cover;
 background-repeat: no-repeat;
-background-size: auto 100%;
 background-color:rgba(255,255,255,0.7);
 background-blend-mode:lighten;
 }
 
 .header{
+height: 100px;
 display: flex;
 font-family: tbudrgothic-std,sans-serif;
 font-weight: 700;
@@ -34,13 +34,31 @@ font-style: normal;
 }
 
 .header_left{
+width: 50%;
 display: flex;
 font-size: 20px;
 }
 
+.header_left div{
+  margin-right: 10px;
+}
+
+.評価{
+  padding-top: 3px;
+}
+.年齢{
+  padding-left: 10px;
+}
+
 .header_right{
+width: 50%;
 display: flex;
 justify-content: flex-end;
+padding-right: 20px;
+}
+
+.カレンダー{
+padding-right: 30px;
 }
 
 #大項目{
@@ -56,4 +74,3 @@ font-style: normal;
 .bmi{
   padding-left: 30px;
 }
-
