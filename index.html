@@ -43,14 +43,14 @@
     <h2 class="health">健康</h2>
     ​
     <!-- BMIここから -->
-    <dl class="bmi">
+    <div class="bmi">
         <form name="qForm" id="qForm" onsubmit="check(); return false;">
-            <dl>
+            <div>
                 <dt>身長</dt>
                 <dd><input type="number" name="height" id="height" required> cm</dd>
                 <dt>体重</dt>
                 <dd><input type="number" name="weight" id="weight" required> kg</dd>
-            </dl>
+            </div>
             <input type="submit" value="チェック">
         </form>
         <div id="result"></div>
@@ -156,6 +156,7 @@
                 <option value="4">ほとんど楽しめてない</option>
             </select>
         </form>
+    </div>
         ​
         <!-- 松尾追加 ↓↓↓↓↓ -->
         <button id="save" type="button">save</button>
@@ -193,14 +194,14 @@
                     result = "肥満（４度）高度肥満";
                 }
 
-                let html = "<dl>";
+                let html = "<div>";
                 html += "<dt>BMI</dt>";
                 html += "<dd>" + bmi + "</dd>";
                 html += "<dt>判定</dt>";
                 html += "<dd>" + result + "</dd>";
                 html += "<dt>標準体重</dt>";
                 html += "<dd>" + right_weight + " kg</dd>";
-                html += "</dl>";
+                html += "</div>";
                 //idがresultの部分にhtmlを表示
                 document.getElementById("result").innerHTML = html;
             }
