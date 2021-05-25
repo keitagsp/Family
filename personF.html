@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-----------フォント設定用 ------------>
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'aqu2xte',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+    <!-----------フォント設定用 ------------>
+    <!-----------FontAweson設定用 ------------>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <!-----------FontAweson設定用 ------------>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+
+
+
+
+
+    <title>お父さん画面</title>
+</head>
+​
+<style>
+    .health {
+        padding-left: 30px;
+    }
+
+    ​ .bmi {
+        padding-left: 30px;
+    }
+</style>
+​
+
+<body>
+
+
+<div class="header">
+    <div class="header_left">
+        <div class="続柄">母</div>
+        <div class="名前">えいこ</div>
+        <div class="評価"><img src="../Family/img/5.svg" width="32" height="32"></div>
+        <div class="年齢">４１歳</div>
+    </div>
+    <div class="header_right">
+        <div class="カレンダー"><i class="far fa-calendar-alt fa-2x"></i></div>
+        <div class="掲示板"><i class="far fa-comment-dots fa-2x"></i></div>
+    </div>
+</div>
+<h2 class="health" id="大項目">健康</h2>
+    ​
+    <!-- BMIここから -->
+    <div class="bmi">
+        <form name="qForm" id="qForm" onsubmit="check(); return false;">
+            <div>
+                <dt>身長</dt>
+                <dd><input type="number" name="height" id="height" required> cm</dd>
+                <dt>体重</dt>
+                <dd><input type="number" name="weight" id="weight" required> kg</dd>
+            </div>
+            <input type="submit" value="チェック">
+        </form>
+        <div id="result"></div>
+        ​
+        <!-- BMIここまで -->
+        ​
+        <!-- 診断 大人1人目 -->変更
+        ​
+        <form action="question1">
+            <p>何か運動する習慣を継続していますか？</p>
+            <select id="sel1" name="sel01">
+                <option value="1">週2回以上 </option>
+                <option value="2" >週1回している </option>
+                <option value="3">あまりしてない</option>
+                <option value="4">全くない</option>
+            </select>
+        </form>
+        <form action="question2">
+            <p>よく眠れてますか？</p>
+            <select id="sel2" name="sel02">
+                <option value="1">眠れている</option>
+                <option value="2">まあ眠れている</option>
+                <option value="3">少し睡眠不足ぎみ</option>
+                <option value="4">眠れてない</option>
+            </select>
+        </form>
+        ​
+        <form action="question3">
+            <p>どこか体に不調がありますか？</p>
+            <select id="sel3" name="sel03">
+                <option value="1">特になし</option>
+                <option value="2" >少しある</option>
+                <option value="3">不調を感じることが多い</option>
+                <option value="4">かなりある</option>
+            </select>
+        </form>
+        ​
+        <form action="question4">
+            <p> 何か我慢してますか？</p>
+            <select id="sel4" name="sel04">
+                <option value="1">全くない</option>
+                <option value="2">少しある</option>
+                <option value="3">我慢することが割と多い</option>
+                <option value="4">毎日我慢</option>
+            </select>
+        </form>
+        <form action="question5">
+            <p>家族との時間は十分取れていますか？</p>
+            <select id="sel5" name="sel05">
+                <option value="1">十分取れている'</option>
+                <option value="2" >まあ取れている</option>
+                <option value="3">あまり取れていない</option>
+                <option value="4">全く取れていない</option>
+            </select>
+        </form>
+        ​
+        <form action="question6">
+            <p>家族一緒で出かけることはありますか？</p>
+            <select id="sel6" name="sel06">
+                <option value="1">月1回以上ある</option>
+                <option value="2">2.3か月に1回</option>
+                <option value="3">半年に1回</option>
+                <option value="4">年に1回</option>
+            </select>
+        </form>
+        ​
+        <form action="question7">
+            <p>今の生活にストレスを感じていますか？</p>
+            <select id="sel7" name="sel07">
+                <option value="1">感じてない</option>
+                <option value="2">あまり感じない</option>
+                <option value="3">少し感じている</option>
+                <option value="4">かなり感じている</option>
+            </select>
+        </form>
+        ​
+        <form action="question8">
+            <p>自分がワクワクすることをやっていますか？</p>
+            <select id="sel8" name="sel08">
+                <option value="1">やっている</option>
+                <option value="2" >やりつつある</option>
+                <option value="3">あまりやれてない</option>
+                <option value="4">ほとんどやれてない</option>
+            </select>
+        </form>
+        ​
+        <form action="question9">
+            <p>家族に言いたいことを伝えられていますか？</p>
+            <select id="sel9" name="sel09">
+                <option value="1">伝えている</option>
+                <option value="2" >だいたい伝えている</option>
+                <option value="3">あまりできてない</option>
+                <option value="4">ほとんどできてない</option>
+            </select>
+        </form>
+
+        <form action="question10">
+            <p> 家族との時間を楽しんでいますか？</p>
+            <select id="sel10" name="sel10">
+                <option value="1">かなり楽しんでいる</option>
+                <option value="2" selected>楽しんでいる</option>
+                <option value="3">あまり楽しめてない</option>
+                <option value="4">ほとんど楽しめてない</option>
+            </select>
+        </form>
+    
+        <!-- 大人1人目終わり -->
+
+
+        ​
+        <!-- 松尾追加 ↓↓↓↓↓ -->
+        <button id="save" type="button">save</button>
+        <!-- 松尾追加 ↑↑↑↑↑ -->
+        ​
+        <!-- script ここから-->
+        ​
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+
+            // BMI計算
+            function check() {
+
+                let height = document.qForm.height.value;
+                let weight = document.qForm.weight.value;
+                let bmi = weight / ((height / 100) * (height / 100));
+                bmi = Math.floor(bmi * 10) / 10;
+                //2標準体重
+                let right_weight = ((height / 100) * (height / 100)) * 22;
+                right_weight = Math.floor(right_weight * 10) / 10;
+                //判定の文字列を格納する変数
+                let result;
+                //BMIの値が何以上、何未満かの条件によって判定するif文
+                if (bmi < 18.5) {
+                    result = "低体重";
+                } else if (bmi >= 18.5 && bmi < 25) {
+                    result = "普通体重";
+                } else if (bmi >= 25 && bmi < 30) {
+                    result = "肥満（１度）";
+                } else if (bmi >= 30 && bmi < 35) {
+                    result = "肥満（２度）";
+                } else if (bmi >= 35 && bmi < 40) {
+                    result = "肥満（３度）高度肥満";
+                } else if (bmi >= 40) {
+                    result = "肥満（４度）高度肥満";
+                }
+
+                let html = "<div>";
+                html += "<dt>BMI</dt>";
+                html += "<dd>" + bmi + "</dd>";
+                html += "<dt>判定</dt>";
+                html += "<dd>" + result + "</dd>";
+                html += "<dt>標準体重</dt>";
+                html += "<dd>" + right_weight + " kg</dd>";
+                html += "</div>";
+                //idがresultの部分にhtmlを表示
+                document.getElementById("result").innerHTML = html;
+            }
+
+
+            $(function () {
+                // saveボタンを押したら合計点を出す---------------------
+                // 質問を一つの配列にする
+                // 文字を数字に変換
+                $('#save').on('click', function () {
+                    const array = [];
+                    let i = 1;
+                    while (i < 11) {
+                        const ans = Number($('#' + `sel${i}`).val());
+                        // console.log(ans);
+                        // console.log(typeof ans);
+                        array.push(ans);
+                        i++;
+                    }
+                    // console.log(array);
+
+                    // 配列の中身を足し算
+                    let sum = 0;
+                    let k = 0;
+                    while (k < array.length) {
+                        sum = sum + array[k];
+                        k++;
+                    }
+                    console.log(sum); //合計点
+
+                    // 判定-----------------------------------------------
+                    // 1点〜4点 10門 一番良い 10点 一番悪い 40点
+                    if (sum < 15) {
+                        console.log('とても良い');
+                    } else if (sum < 25) {
+                        console.log('良い');
+                    } else if (sum < 35) {
+                        console.log('がんばろう');
+                    }
+                });
+            });
+
+        </script>
+    <script src="app.js"></script>
+</body>
+​
+
+</html>
