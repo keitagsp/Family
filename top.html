@@ -42,6 +42,99 @@
         border-color: #fff;
         text-decoration: none;
     } */
+        /*　ハンバーガーボタン*/
+    .hamburger {
+    display : block;
+    position: fixed;
+    z-index : 3;
+    right : 13px; top   : 12px;
+    width : 42px; height: 42px;
+    cursor: pointer;
+    text-align: center;
+    }
+    .hamburger span {
+    display : block;
+    position: absolute;
+    width   : 30px;
+    height  : 2px ;
+    left    : 6px;
+    background: black;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition   : 0.3s ease-in-out;
+    transition        : 0.3s ease-in-out;
+    }
+    .hamburger span:nth-child(1) {
+    top: 10px;
+    }
+    .hamburger span:nth-child(2) {
+    top: 20px;
+    }
+    .hamburger span:nth-child(3) {
+    top: 30px;
+    }
+
+    /* ボタン開 */
+    .hamburger.active span:nth-child(1) {
+    top : 16px;
+    left: 6px;
+    background: black;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform   : rotate(-45deg);
+    transform        : rotate(-45deg);
+    }
+
+    .hamburger.active span:nth-child(2),
+    .hamburger.active span:nth-child(3) {
+    top: 16px;
+    background: black;
+    -webkit-transform: rotate(45deg);
+    -moz-transform   : rotate(45deg);
+    transform        : rotate(45deg);
+    }
+
+    nav.globalMenuSp {
+    position: fixed;
+    z-index : 2;
+    top  : 0;
+    left : 0;
+    background: #fff;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: opacity .6s ease, visibility .6s ease;
+    }
+
+    nav.globalMenuSp ul {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    }
+
+    nav.globalMenuSp ul li {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    transition: .4s all;
+    }
+    nav.globalMenuSp ul li:last-child {
+    padding-bottom: 0;
+    }
+    nav.globalMenuSp ul li:hover{
+    background: lightyellow;
+    }
+
+    nav.globalMenuSp ul li a {
+    display: block;
+    color: black;
+    font-family: sans-serif;
+    padding: 1em 0;
+    text-decoration :none;
+    }
+
+    nav.globalMenuSp.active {
+    opacity: 100;
+    }
+    /* ハンバーガーボタン 終わり*/
 </style>
 ​
 <body>
@@ -84,6 +177,23 @@
         <div class="掲示板"><i class="far fa-comment-dots fa-2x"></i></div>
     </div>
 </div> -->
+
+<!-- ハンバーガーボタンここから -->
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <nav class="globalMenuSp">
+        <ul>
+            <li><a href="file:///Users/macpro/Desktop/Family/personM.html">父</a></li>
+            <li><a href="file:///Users/macpro/Desktop/Family/personF.html">母</a></li>
+            <li><a href="file:///Users/macpro/Desktop/Family/personC1.html">あ</a></li>
+            <li><a href="file:///Users/macpro/Desktop/Family/personC2.html">ゆ</a></li>
+        </ul>
+    </nav>
+    <!-- ハンバーガーボタンここまで -->
         ​
         <!-- script ここから-->
         ​
@@ -102,13 +212,18 @@
                 $('.target4').click(function() {
                 window.location.href = 'file:///Users/macpro/Desktop/Family/personC2.html';});
 
+    // ハンバーガーここから
+        $(function() {
+            $('.hamburger').click(function() {
+                $(this).toggleClass('active');
 
-
-
-
-
-
-
+                if ($(this).hasClass('active')) {
+                    $('.globalMenuSp').addClass('active');
+                } else {
+                    $('.globalMenuSp').removeClass('active');
+                }
+            });
+        });
 
         </script>
     <script src="app.js"></script>
