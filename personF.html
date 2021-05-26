@@ -51,9 +51,9 @@
 
 <div class="header">
     <div class="header_left">
-        <div class="続柄">母</div>
-        <div class="名前">えいこ</div>
-        <div class="評価"><img src="../Family/img/5.svg" width="32" height="32"></div>
+        <div class="続柄">父</div>
+        <div class="名前">○○○</div>
+        <div class="評価" id="F評価"><img src="../Family/img/5.svg" width="32" height="32"></div>
         <div class="年齢">４１歳</div>
     </div>
     <div class="header_right">
@@ -68,9 +68,9 @@
         <form name="qForm" id="qForm" onsubmit="check(); return false;">
             <div>
                 <dt>身長</dt>
-                <dd><input type="number" name="height" id="height" required> cm</dd>
+                <dd><input type="number" name="height" id="Fheight" required> cm</dd>
                 <dt>体重</dt>
-                <dd><input type="number" name="weight" id="weight" required> kg</dd>
+                <dd><input type="number" name="weight" id="Fweight" required> kg</dd>
             </div>
             <input type="submit" value="チェック">
         </form>
@@ -82,7 +82,7 @@
         ​
         <form action="question1">
             <p>何か運動する習慣を継続していますか？</p>
-            <select id="sel1" name="sel01">
+            <select id="Fsel1" name="sel01">
                 <option value="1">週2回以上 </option>
                 <option value="2" >週1回している </option>
                 <option value="3">あまりしてない</option>
@@ -91,7 +91,7 @@
         </form>
         <form action="question2">
             <p>よく眠れてますか？</p>
-            <select id="sel2" name="sel02">
+            <select id="Fsel2" name="sel02">
                 <option value="1">眠れている</option>
                 <option value="2">まあ眠れている</option>
                 <option value="3">少し睡眠不足ぎみ</option>
@@ -101,7 +101,7 @@
         ​
         <form action="question3">
             <p>どこか体に不調がありますか？</p>
-            <select id="sel3" name="sel03">
+            <select id="Fsel3" name="sel03">
                 <option value="1">特になし</option>
                 <option value="2" >少しある</option>
                 <option value="3">不調を感じることが多い</option>
@@ -111,7 +111,7 @@
         ​
         <form action="question4">
             <p> 何か我慢してますか？</p>
-            <select id="sel4" name="sel04">
+            <select id="Fsel4" name="sel04">
                 <option value="1">全くない</option>
                 <option value="2">少しある</option>
                 <option value="3">我慢することが割と多い</option>
@@ -120,7 +120,7 @@
         </form>
         <form action="question5">
             <p>家族との時間は十分取れていますか？</p>
-            <select id="sel5" name="sel05">
+            <select id="Fsel5" name="sel05">
                 <option value="1">十分取れている'</option>
                 <option value="2" >まあ取れている</option>
                 <option value="3">あまり取れていない</option>
@@ -130,7 +130,7 @@
         ​
         <form action="question6">
             <p>家族一緒で出かけることはありますか？</p>
-            <select id="sel6" name="sel06">
+            <select id="Fsel6" name="sel06">
                 <option value="1">月1回以上ある</option>
                 <option value="2">2.3か月に1回</option>
                 <option value="3">半年に1回</option>
@@ -140,7 +140,7 @@
         ​
         <form action="question7">
             <p>今の生活にストレスを感じていますか？</p>
-            <select id="sel7" name="sel07">
+            <select id="Fsel7" name="sel07">
                 <option value="1">感じてない</option>
                 <option value="2">あまり感じない</option>
                 <option value="3">少し感じている</option>
@@ -150,7 +150,7 @@
         ​
         <form action="question8">
             <p>自分がワクワクすることをやっていますか？</p>
-            <select id="sel8" name="sel08">
+            <select id="Fsel8" name="sel08">
                 <option value="1">やっている</option>
                 <option value="2" >やりつつある</option>
                 <option value="3">あまりやれてない</option>
@@ -160,7 +160,7 @@
         ​
         <form action="question9">
             <p>家族に言いたいことを伝えられていますか？</p>
-            <select id="sel9" name="sel09">
+            <select id="Fsel9" name="sel09">
                 <option value="1">伝えている</option>
                 <option value="2" >だいたい伝えている</option>
                 <option value="3">あまりできてない</option>
@@ -170,7 +170,7 @@
 
         <form action="question10">
             <p> 家族との時間を楽しんでいますか？</p>
-            <select id="sel10" name="sel10">
+            <select id="Fsel10" name="sel10">
                 <option value="1">かなり楽しんでいる</option>
                 <option value="2" selected>楽しんでいる</option>
                 <option value="3">あまり楽しめてない</option>
@@ -183,7 +183,7 @@
 
         ​
         <!-- 松尾追加 ↓↓↓↓↓ -->
-        <button id="save" type="button">save</button>
+        <button id="Fsave" type="button">save</button>
         <!-- 松尾追加 ↑↑↑↑↑ -->
         ​
         <!-- script ここから-->
@@ -231,42 +231,6 @@
             }
 
 
-            $(function () {
-                // saveボタンを押したら合計点を出す---------------------
-                // 質問を一つの配列にする
-                // 文字を数字に変換
-                $('#save').on('click', function () {
-                    const array = [];
-                    let i = 1;
-                    while (i < 11) {
-                        const ans = Number($('#' + `sel${i}`).val());
-                        // console.log(ans);
-                        // console.log(typeof ans);
-                        array.push(ans);
-                        i++;
-                    }
-                    // console.log(array);
-
-                    // 配列の中身を足し算
-                    let sum = 0;
-                    let k = 0;
-                    while (k < array.length) {
-                        sum = sum + array[k];
-                        k++;
-                    }
-                    console.log(sum); //合計点
-
-                    // 判定-----------------------------------------------
-                    // 1点〜4点 10門 一番良い 10点 一番悪い 40点
-                    if (sum < 15) {
-                        console.log('とても良い');
-                    } else if (sum < 25) {
-                        console.log('良い');
-                    } else if (sum < 35) {
-                        console.log('がんばろう');
-                    }
-                });
-            });
 
         </script>
     <script src="app.js"></script>
