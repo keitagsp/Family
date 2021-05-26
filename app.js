@@ -335,19 +335,19 @@ $('#C2save').on('click', function () {
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
   if (sum < 15) {
     console.log('診断5');
-    $('#c2評価').attr('src', '../Family/img/5.svg');
+    $('#C2評価').attr('src', '../Family/img/5.svg');
   } else if (sum < 21) {
     console.log('診断4');
-    $('#c2評価').attr('src', '../Family/img/4.svg');
+    $('#C2評価').attr('src', '../Family/img/4.svg');
   } else if (sum < 27) {
     console.log('診断3');
-    $('#c2評価').attr('src', '../Family/img/3.svg');
+    $('#C2評価').attr('src', '../Family/img/3.svg');
   } else if (sum < 33) {
     console.log('診断2');
-    $('#c2評価').attr('src', '../Family/img/2.svg');
+    $('#C2評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('#c2評価').attr('src', '../Family/img/1.svg');
+    $('#C2評価').attr('src', '../Family/img/1.svg');
   }
   // 送信ボタンを押したら、値をdbに入れる ---子ども②--------------------------
   // Add a new document in collection "cities"
@@ -537,26 +537,25 @@ total_docRef.get().then((doc) => {
     // console.log(data_C2[0].src);
 
     const all = (data_total[0].sumF + data_total[0].sumM + data_total[0].sumC1 + data_total[0].sumC2) / 4;
-    console.log(all);
+    console.log("家族の点数"+all);
     // 判定----------------------
     // 1点〜4点 10門 一番良い 10点 一番悪い 40点
     if (all < 15) {
       console.log('診断5');
-      $('#total').attr('src', '../Family/img/big5.svg');
+      $('#total').attr('src', 'img/big5.svg');
     } else if (all < 21) {
       console.log('診断4');
-      $('#total').attr('src', '../Family/img/big4.svg');
+      $('#total').attr('src', 'img/big4.svg');
     } else if (all < 27) {
       console.log('診断3');
-      $('#total').attr('src', '../Family/img/big3.svg');
+      $('#total').attr('src', 'img/big3.svg');
     } else if (all < 33) {
       console.log('診断2');
-      $('#total').attr('src', '../Family/img/big2.svg');
+      $('#total').attr('src', 'img/big2.svg');
     } else if (all < 41) {
       console.log('診断1');
-      $('#total').attr('src', '../Family/img/big1.svg');
+      $('#total').attr('src', 'img/big1.svg');
     }
-
 
 
     // src = "img/big4.svg"
