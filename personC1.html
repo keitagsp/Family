@@ -53,25 +53,28 @@
 
 <div class="main">
 
-<p class="health" id="大項目">健康</p>
     ​
     <!-- BMIここから -->
-    <div class="bmi">
-        <form name="qForm" id="qForm" onsubmit="check(); return false;">
-            <div>
-                <dt>身長</dt>
-                <dd><input type="number" name="height" id="C1height" required> cm</dd>
-                <dt>体重</dt>
-                <dd><input type="number" name="weight" id="C1weight" required> kg</dd>
-            </div>
-            <input type="submit" value="チェック">
-        </form>
-        <div id="result"></div>
-    </div>
+
     <!-- BMIここまで -->
         ​
     <!-- 診断 子供1人目 --> 
+
     <div class="question">
+        <p class="大項目">健康</p>
+            <div class="bmi">
+                <form name="qForm" id="qForm" onsubmit="check(); return false;">
+                    <div>
+                        <li>身長</li>
+                        <div><input type="number" name="height" id="C1height" required> cm</div>
+                        <li>体重</li>
+                        <div><input type="number" name="weight" id="C1weight" required> kg</div>
+                    </div>
+                    <input type="submit" value="チェック">
+                </form>
+                <div id="result"></div>
+            </div>
+        <p class="大項目">学校</p>
         <form action="question1">
                 <li>学校は楽しいですか？</li>
                 <select id="C1sel1" name="sel01">
@@ -81,7 +84,7 @@
                     <option value="4">あまり楽しくない</option>
                 </select>
             </form>
-
+<p class="大項目">夢</p>
             <form action="question2">
                 <li>自分がワクワクすることをやっていますか？</li>
                 <select id="C1sel2" name="sel02">
@@ -92,6 +95,7 @@
                 </select>
             </form>
 
+<p class="大項目">家族</p>
             
             <form action="question3">
                 <li>家族の中で何か我慢していることがありますか？</li>
@@ -173,16 +177,18 @@
             </form>
 
     </div>
-    <!-- 診断 子供1人目ここまで -->
+            <!-- 松尾追加 ↓↓↓↓↓ -->
+            <div class="save">
+            <button id="C1save" type="button">記録する</button>
+            </div>
+            <!-- 松尾追加 ↑↑↑↑↑ -->
+
 
 </div>
 
 
 
         ​
-        <!-- 松尾追加 ↓↓↓↓↓ -->
-        <button id="C1save" type="button">save</button>
-        <!-- 松尾追加 ↑↑↑↑↑ -->
         ​
         <!-- script ここから-->
         ​

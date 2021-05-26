@@ -38,7 +38,7 @@ display: flex;
 font-family: vdl-v7marugothic,sans-serif;
 font-weight: 800;
 font-style: normal;
-font-size: 38px;
+font-size: 40px;
 margin-left: 40px;
 }
 
@@ -80,7 +80,7 @@ margin-right: 60px;
 
 /*ハンバーガーボタン*/
 .hamburger {
-margin-top: 10px;
+margin-top: 14px;
 position: fixed;
 z-index : 3;
 width : 42px; 
@@ -104,10 +104,10 @@ transition        : 0.3s ease-in-out;
 top: 10px;
 }
 .hamburger span:nth-child(2) {
-top: 23px;
+top: 25px;
 }
 .hamburger span:nth-child(3) {
-top: 36px;
+top: 40px;
 }
 
 /* ボタン開 */
@@ -179,14 +179,8 @@ opacity: 100;
 }
 
 /* カレンダーここから */
-a{
+.calendar a{
   color:black;
-  font-size: 30px;
   text-decoration: none;
 } 
-.calendar{
-  position: fixed;
-  top:100px;
-  right: 20px;
-}
 /* カレンダーここまで */

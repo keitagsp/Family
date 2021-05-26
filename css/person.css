@@ -12,8 +12,17 @@ font-weight: 700;
 font-style: normal;
 
 font-family: vdl-v7marugothic,sans-serif;
+font-weight: 700;
+font-style: normal;
+
+font-family: vdl-v7marugothic,sans-serif;
 font-weight: 800;
 font-style: normal;
+
+font-family: kinuta-maruminshinano-stdn,serif;
+font-weight: 400;
+font-style: normal;
+
 */
 
 * { 
@@ -78,19 +87,69 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 align-items: center;
-font-family: vdl-yotag,sans-serif;
-font-weight: 500;
+font-family: maru-maru-gothic-alr-stdn,sans-serif;
+font-weight: 400;
 font-style: normal;
 }
 
-#大項目{
-font-family: vdl-yotag,sans-serif;
-font-weight: 500;
+.大項目{
+font-family: vdl-v7marugothic,sans-serif;
+font-weight: 700;
 font-style: normal;
+font-size: 40px;
+margin-top: 80px;
+margin-bottom: 20px;
+}
+
+
+.question{
+font-family: maru-maru-gothic-alr-stdn,sans-serif;
+font-weight: 400;
+font-style: normal; 
+font-size: 20px;
+}
+
+.question input{
+font-family: maru-maru-gothic-alr-stdn,sans-serif;
+font-weight: 400;
+font-style: normal; 
+font-size: 20px;
+background-color: transparent;
+background-color: transparent;
+border-right:none;
+border-left:none;
+border-top:none;
+outline: 0;
+}
+
+.question li{
+font-size: 20px;
 }
 
 .question form{
-margin-bottom: 30px;
+margin-top: 15px;
+margin-bottom: 50px;
 }
 
+.question select{
+font-size: 20px;
+margin-top: 15px;
+margin-bottom: 50px;
+background-color: transparent;
+border-right:none;
+border-left:none;
+border-top:none;
+outline: 0;
+}
+
+.save button{
+font-size: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-left: 30px;
+padding-right: 30px;
+border: solid,1px,black;
+border-radius: 30px;
+cursor: pointer;
+}
 
