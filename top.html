@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-----------フォント設定用 ------------>
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'aqu2xte',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+    <!-----------フォント設定用 ------------>
+    <!-----------FontAweson設定用 ------------>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <!-----------FontAweson設定用 ------------>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+
+    <title>トップ画面</title>
+</head>
+​
+<style>
+    /* .target{
+        width: 175px;
+        height: 30px;
+        font-size: 20px;
+        display: inline-block;
+        color: black;
+        background-color: #fff;
+        border-color: #fff;
+        text-decoration: none;
+    } */
+</style>
+​
+<body>
+
+    <button class="target1">父 ◯◯<img src="../Family/img/5.svg" width="25" height="25"> 45歳</button>
+    <button class="target2">母 えいこ<img src="../Family/img/5.svg" width="25" height="25"> 41歳</button>
+    <button class="target3">息子 ◯◯<img src="../Family/img/5.svg" width="25" height="25"> 15歳</button>
+    <button class="target4">娘 ◯◯<img src="../Family/img/5.svg" width="25" height="25"> 11歳</button>
+
+
+<div class="header">
+    <div class="header_left">
+        <div class="続柄"></div>
+        <div class="名前"></div>
+        <div class="評価"><img src="../Family/img/5.svg" width="32" height="32"></div>
+        <div class="年齢"></div>
+    </div> 
+    <div class="header_right">
+        <div class="カレンダー"><i class="far fa-calendar-alt fa-2x"></i></div>
+        <div class="掲示板"><i class="far fa-comment-dots fa-2x"></i></div>
+    </div>
+</div>
+        ​
+        <!-- script ここから-->
+        ​
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+
+            $('.target1').click(function() {
+                window.location.href = 'file:///Users/macpro/Desktop/Family/personM.html';});
+
+            $('.target2').click(function() {
+                window.location.href = 'file:///Users/macpro/Desktop/Family/personF.html';});
+            
+            $('.target3').click(function() {
+                window.location.href = 'file:///Users/macpro/Desktop/Family/personC1.html';});
+
+                $('.target4').click(function() {
+                window.location.href = 'file:///Users/macpro/Desktop/Family/personC2.html';});
+
+
+
+
+
+
+
+
+
+        </script>
+    <script src="app.js"></script>
+</body>
+​
+</html>
