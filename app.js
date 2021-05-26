@@ -114,6 +114,10 @@ $('#Fsave').on('click', function () {
       });
   // });
 
+  //ページ遷移
+  setTimeout(function () {
+    location.href = "top.html";
+  }, 5000);
 
   // ドキュメント全体を上書きせずにドキュメントの一部のフィールドを更新するには、update()
   const Ref = db.collection('total').doc('totaldoc');
@@ -129,8 +133,8 @@ $('#Fsave').on('click', function () {
     // The document probably doesn't exist.
     console.error("Error updating document: ", error);
   });
-
-
+  
+  
 });
 
 
@@ -204,6 +208,13 @@ $('#Msave').on('click', function () {
       .catch((error) => {
         console.error('Error writing document: ', error);
       });
+  
+
+  //ページ遷移
+  setTimeout(function () {
+    location.href = "top.html";
+  }, 5000);
+  
   // ドキュメント全体を上書きせずにドキュメントの一部のフィールドを更新するには、update()
   const Ref = db.collection('total').doc('totaldoc');
 
@@ -290,6 +301,13 @@ $('#C1save').on('click', function () {
     .catch((error) => {
       console.error('Error writing document: ', error);
     });
+  
+
+  //ページ遷移
+  setTimeout(function () {
+    location.href = "top.html";
+  }, 5000);
+  
   // ドキュメント全体を上書きせずにドキュメントの一部のフィールドを更新するには、update()
   const Ref = db.collection('total').doc('totaldoc');
 
@@ -374,6 +392,10 @@ $('#C2save').on('click', function () {
     console.error('Error writing document: ', error);
   });
 
+  //ページ遷移
+  setTimeout(function () {
+    location.href = "top.html";
+  }, 5000);
 
   // ドキュメント全体を上書きせずにドキュメントの一部のフィールドを更新するには、update()
   const Ref = db.collection('total').doc('totaldoc');
