@@ -1,12 +1,29 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyBr-SK7_M-dnsl7MRCFzyPk-vyyAizUe28",
+  authDomain: "family210525.firebaseapp.com",
+  projectId: "family210525",
+  storageBucket: "family210525.appspot.com",
+  messagingSenderId: "442599796881",
+  appId: "1:442599796881:web:c321b054ffa7d95fc74f30"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
-// const family_total = Fsum + Msum + C1sum + C2sum;
-// console.log(family_total);
+var db = firebase.firestore();
 
-// 家族合計
-// let Fsum;
-// let Msum;
-// let C1sum;
-// let C2sum;
+// 日時をいい感じの形式にする関数
+function convertFromFirestoreTimestampToDatetime(timestamp) {
+  const _d = timestamp ? new Date(timestamp * 1000) : new Date();
+  const Y = _d.getFullYear();
+  const m = (_d.getMonth() + 1).toString().padStart(2, '0');
+  const d = _d.getDate().toString().padStart(2, '0');
+  const H = _d.getHours().toString().padStart(2, '0');
+  const i = _d.getMinutes().toString().padStart(2, '0');
+  const s = _d.getSeconds().toString().padStart(2, '0');
+  return `${Y}/${m}/${d} ${H}:${i}:${s}`;
+}
 
 
 
@@ -37,7 +54,6 @@ $('#Fsave').on('click', function () {
     k++;
   }
   console.log(sum); //合計点
-  Fsum = sum;
 
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
@@ -45,20 +61,50 @@ $('#Fsave').on('click', function () {
   if (sum < 13) {
     console.log('診断5');
     $('#F評価').attr('src', '../Family/img/5.svg');
-  } else if (sum < 23) {
-    console.log('診断4');
-    $('#F評価').attr('src', '../Family/img/4.svg');
-  } else if (sum < 28) {
+  } else if (sum < 20) {
     console.log('診断3');
     $('#F評価').attr('src', '../Family/img/3.svg');
-  } else if (sum < 35) {
+  } else if (sum < 30) {
     console.log('診断2');
     $('#F評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
     $('#F評価').attr('src', '../Family/img/1.svg');
   }
+  // 送信ボタンを押したら、値をdbに入れる ---お父さん--------------------------
+  // $('#Fsave').on('click', function () {
+    // Add a new document in collection "cities"
+    db.collection('family').doc('father').set({
+      src: $('#F評価').attr('src'),
+      height: $('#Fheight').val(),
+      weight: $('#Fweight').val(),
+      sel1: $('#Fsel1').val(),
+      sel2: $('#Fsel2').val(),
+      sel3: $('#Fsel3').val(),
+      sel4: $('#Fsel4').val(),
+      sel5: $('#Fsel5').val(),
+      sel6: $('#Fsel6').val(),
+      sel7: $('#Fsel7').val(),
+      sel8: $('#Fsel8').val(),
+      sel9: $('#Fsel9').val(),
+      sel10: $('#Fsel10').val(),
+      sum: sum,
+      time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+    })
+      .then(() => {
+        console.log('Document successfully written!');
+      })
+      .catch((error) => {
+        console.error('Error writing document: ', error);
+      });
+  // });
+
+
 });
+
+
+
+
 
 // お母さん-----------------------------------------------
 $('#Msave').on('click', function () {
@@ -83,27 +129,55 @@ $('#Msave').on('click', function () {
   console.log(sum); //合計点
   const family_sumF = sum;
 
-  Msum = sum;
 
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
   if (sum < 13) {
     console.log('診断5');
-    $('#M評価').attr('src', '../Family/img/5.svg');
-  } else if (sum < 23) {
-    console.log('診断4');
-    $('#M評価').attr('src', '../Family/img/4.svg');
-  } else if (sum < 28) {
+    $('#F評価').attr('src', '../Family/img/5.svg');
+  } else if (sum < 20) {
     console.log('診断3');
-    $('#M評価').attr('src', '../Family/img/3.svg');
-  } else if (sum < 35) {
+    $('#F評価').attr('src', '../Family/img/3.svg');
+  } else if (sum < 30) {
     console.log('診断2');
-    $('#M評価').attr('src', '../Family/img/2.svg');
+    $('#F評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('#M評価').attr('src', '../Family/img/1.svg');
+    $('#F評価').attr('src', '../Family/img/1.svg');
   }
+
+  // 送信ボタンを押したら、値をdbに入れる ---お母さん--------------------------
+    // Add a new document in collection "cities"
+    db.collection('family').doc('mother').set({
+      src: $('#M評価').attr('src'),
+      height: $('#Mheight').val(),
+      weight: $('#Mweight').val(),
+      sel1: $('#Msel1').val(),
+      sel2: $('#Msel2').val(),
+      sel3: $('#Msel3').val(),
+      sel4: $('#Msel4').val(),
+      sel5: $('#Msel5').val(),
+      sel6: $('#Msel6').val(),
+      sel7: $('#Msel7').val(),
+      sel8: $('#Msel8').val(),
+      sel9: $('#Msel9').val(),
+      sel10: $('#Msel10').val(),
+      sum: sum,
+      time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+    })
+      .then(() => {
+        console.log('Document successfully written!');
+      })
+      .catch((error) => {
+        console.error('Error writing document: ', error);
+      });
+
+
 });
+
+
+
+
 // 子ども1-----------------------------------------------
 $('#C1save').on('click', function () {
   const array = [];
@@ -127,27 +201,51 @@ $('#C1save').on('click', function () {
   console.log(sum); //合計点
   const family_sumF = sum;
 
-  C1sum = sum;
 
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
   if (sum < 13) {
     console.log('診断5');
-    $('#C1評価').attr('src', '../Family/img/5.svg');
-  } else if (sum < 23) {
-    console.log('診断4');
-    $('#C1評価').attr('src', '../Family/img/4.svg');
-  } else if (sum < 28) {
+    $('#F評価').attr('src', '../Family/img/5.svg');
+  } else if (sum < 20) {
     console.log('診断3');
-    $('#C1評価').attr('src', '../Family/img/3.svg');
-  } else if (sum < 35) {
+    $('#F評価').attr('src', '../Family/img/3.svg');
+  } else if (sum < 30) {
     console.log('診断2');
-    $('#C1評価').attr('src', '../Family/img/2.svg');
+    $('#F評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('#C1評価').attr('src', '../Family/img/1.svg');
+    $('#F評価').attr('src', '../Family/img/1.svg');
   }
+    // Add a new document in collection "cities"
+    db.collection('family').doc('child1').set({
+      src: $('#C1評価').attr('src'),
+      height: $('#C1height').val(),
+      weight: $('#C1weight').val(),
+      sel1: $('#C1sel1').val(),
+      sel2: $('#C1sel2').val(),
+      sel3: $('#C1sel3').val(),
+      sel4: $('#C1sel4').val(),
+      sel5: $('#C1sel5').val(),
+      sel6: $('#C1sel6').val(),
+      sel7: $('#C1sel7').val(),
+      sel8: $('#C1sel8').val(),
+      sel9: $('#C1sel9').val(),
+      sel10: $('#C1sel10').val(),
+      sum: sum,
+      time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+    })
+      .then(() => {
+        console.log('Document successfully written!');
+      })
+      .catch((error) => {
+        console.error('Error writing document: ', error);
+      });
 });
+
+
+
+
 // 子ども2-----------------------------------------------
 $('#C2save').on('click', function () {
   const array = [];
@@ -171,146 +269,23 @@ $('#C2save').on('click', function () {
   console.log(sum); //合計点
   const family_sumF = sum;
 
-  C2sum = sum;
 
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
   if (sum < 13) {
     console.log('診断5');
-    $('#C2評価').attr('src', '../Family/img/5.svg');
-  } else if (sum < 23) {
-    console.log('診断4');
-    $('#C2評価').attr('src', '../Family/img/4.svg');
-  } else if (sum < 28) {
+    $('#F評価').attr('src', '../Family/img/5.svg');
+  } else if (sum < 20) {
     console.log('診断3');
-    $('#C2評価').attr('src', '../Family/img/3.svg');
-  } else if (sum < 35) {
+    $('#F評価').attr('src', '../Family/img/3.svg');
+  } else if (sum < 30) {
     console.log('診断2');
-    $('#C2評価').attr('src', '../Family/img/2.svg');
+    $('#F評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('#C2評価').attr('src', '../Family/img/1.svg');
+    $('#F評価').attr('src', '../Family/img/1.svg');
   }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyBr-SK7_M-dnsl7MRCFzyPk-vyyAizUe28",
-  authDomain: "family210525.firebaseapp.com",
-  projectId: "family210525",
-  storageBucket: "family210525.appspot.com",
-  messagingSenderId: "442599796881",
-  appId: "1:442599796881:web:c321b054ffa7d95fc74f30"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-
-var db = firebase.firestore();
-
-// 日時をいい感じの形式にする関数
-function convertFromFirestoreTimestampToDatetime(timestamp) {
-  const _d = timestamp ? new Date(timestamp * 1000) : new Date();
-  const Y = _d.getFullYear();
-  const m = (_d.getMonth() + 1).toString().padStart(2, '0');
-  const d = _d.getDate().toString().padStart(2, '0');
-  const H = _d.getHours().toString().padStart(2, '0');
-  const i = _d.getMinutes().toString().padStart(2, '0');
-  const s = _d.getSeconds().toString().padStart(2, '0');
-  return `${Y}/${m}/${d} ${H}:${i}:${s}`;
-}
-
-// 送信ボタンを押したら、値をdbに入れる ---お父さん--------------------------
-$('#Fsave').on('click', function () {
-  // Add a new document in collection "cities"
-  db.collection('family').doc('father').set({
-    src: $('#F評価').attr('src'),
-    height: $('#Fheight').val(),
-    weight: $('#Fweight').val(),
-    sel1: $('#Fsel1').val(),
-    sel2: $('#Fsel2').val(),
-    sel3: $('#Fsel3').val(),
-    sel4: $('#Fsel4').val(),
-    sel5: $('#Fsel5').val(),
-    sel6: $('#Fsel6').val(),
-    sel7: $('#Fsel7').val(),
-    sel8: $('#Fsel8').val(),
-    sel9: $('#Fsel9').val(),
-    sel10: $('#Fsel10').val(),
-    time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-  })
-    .then(() => {
-      console.log('Document successfully written!');
-    })
-    .catch((error) => {
-      console.error('Error writing document: ', error);
-    });
-});
-// 送信ボタンを押したら、値をdbに入れる ---お母さん--------------------------
-$('#Msave').on('click', function () {
-  // Add a new document in collection "cities"
-  db.collection('family').doc('mother').set({
-    src: $('#M評価').attr('src'),
-    height: $('#Mheight').val(),
-    weight: $('#Mweight').val(),
-    sel1: $('#Msel1').val(),
-    sel2: $('#Msel2').val(),
-    sel3: $('#Msel3').val(),
-    sel4: $('#Msel4').val(),
-    sel5: $('#Msel5').val(),
-    sel6: $('#Msel6').val(),
-    sel7: $('#Msel7').val(),
-    sel8: $('#Msel8').val(),
-    sel9: $('#Msel9').val(),
-    sel10: $('#Msel10').val(),
-    time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-  })
-    .then(() => {
-      console.log('Document successfully written!');
-    })
-    .catch((error) => {
-      console.error('Error writing document: ', error);
-    });
-});
-// 送信ボタンを押したら、値をdbに入れる ---子ども①--------------------------
-$('#C1save').on('click', function () {
-  // Add a new document in collection "cities"
-  db.collection('family').doc('child1').set({
-    src: $('#C1評価').attr('src'),
-    height: $('#C1height').val(),
-    weight: $('#C1weight').val(),
-    sel1: $('#C1sel1').val(),
-    sel2: $('#C1sel2').val(),
-    sel3: $('#C1sel3').val(),
-    sel4: $('#C1sel4').val(),
-    sel5: $('#C1sel5').val(),
-    sel6: $('#C1sel6').val(),
-    sel7: $('#C1sel7').val(),
-    sel8: $('#C1sel8').val(),
-    sel9: $('#C1sel9').val(),
-    sel10: $('#C1sel10').val(),
-    time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-  })
-    .then(() => {
-      console.log('Document successfully written!');
-    })
-    .catch((error) => {
-      console.error('Error writing document: ', error);
-    });
-});
 // 送信ボタンを押したら、値をdbに入れる ---子ども②--------------------------
-$('#C2save').on('click', function () {
   // Add a new document in collection "cities"
   db.collection('family').doc('child2').set({
     src: $('#C2評価').attr('src'),
@@ -326,15 +301,133 @@ $('#C2save').on('click', function () {
     sel8: $('#C2sel8').val(),
     sel9: $('#C2sel9').val(),
     sel10: $('#C2sel10').val(),
+    sum: sum,
     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
   })
-    .then(() => {
-      console.log('Document successfully written!');
-    })
-    .catch((error) => {
-      console.error('Error writing document: ', error);
-    });
+  .then(() => {
+    console.log('Document successfully written!');
+  })
+  .catch((error) => {
+    console.error('Error writing document: ', error);
+  });
+  
 });
+
+
+
+
+
+
+
+
+
+
+
+// 送信ボタンを押したら、値をdbに入れる ---お父さん--------------------------
+// $('#Fsave').on('click', function () {
+//   // Add a new document in collection "cities"
+//   db.collection('family').doc('father').set({
+//     src: $('#F評価').attr('src'),
+//     height: $('#Fheight').val(),
+//     weight: $('#Fweight').val(),
+//     sel1: $('#Fsel1').val(),
+//     sel2: $('#Fsel2').val(),
+//     sel3: $('#Fsel3').val(),
+//     sel4: $('#Fsel4').val(),
+//     sel5: $('#Fsel5').val(),
+//     sel6: $('#Fsel6').val(),
+//     sel7: $('#Fsel7').val(),
+//     sel8: $('#Fsel8').val(),
+//     sel9: $('#Fsel9').val(),
+//     sel10: $('#Fsel10').val(),
+//     // sum: Fsum,
+//     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+//   })
+//     .then(() => {
+//       console.log('Document successfully written!');
+//     })
+//     .catch((error) => {
+//       console.error('Error writing document: ', error);
+//     });
+// });
+// 送信ボタンを押したら、値をdbに入れる ---お母さん--------------------------
+// $('#Msave').on('click', function () {
+//   // Add a new document in collection "cities"
+//   db.collection('family').doc('mother').set({
+//     src: $('#M評価').attr('src'),
+//     height: $('#Mheight').val(),
+//     weight: $('#Mweight').val(),
+//     sel1: $('#Msel1').val(),
+//     sel2: $('#Msel2').val(),
+//     sel3: $('#Msel3').val(),
+//     sel4: $('#Msel4').val(),
+//     sel5: $('#Msel5').val(),
+//     sel6: $('#Msel6').val(),
+//     sel7: $('#Msel7').val(),
+//     sel8: $('#Msel8').val(),
+//     sel9: $('#Msel9').val(),
+//     sel10: $('#Msel10').val(),
+//     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+//   })
+//     .then(() => {
+//       console.log('Document successfully written!');
+//     })
+//     .catch((error) => {
+//       console.error('Error writing document: ', error);
+//     });
+// });
+// 送信ボタンを押したら、値をdbに入れる ---子ども①--------------------------
+// $('#C1save').on('click', function () {
+//   // Add a new document in collection "cities"
+//   db.collection('family').doc('child1').set({
+//     src: $('#C1評価').attr('src'),
+//     height: $('#C1height').val(),
+//     weight: $('#C1weight').val(),
+//     sel1: $('#C1sel1').val(),
+//     sel2: $('#C1sel2').val(),
+//     sel3: $('#C1sel3').val(),
+//     sel4: $('#C1sel4').val(),
+//     sel5: $('#C1sel5').val(),
+//     sel6: $('#C1sel6').val(),
+//     sel7: $('#C1sel7').val(),
+//     sel8: $('#C1sel8').val(),
+//     sel9: $('#C1sel9').val(),
+//     sel10: $('#C1sel10').val(),
+//     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+//   })
+//     .then(() => {
+//       console.log('Document successfully written!');
+//     })
+//     .catch((error) => {
+//       console.error('Error writing document: ', error);
+//     });
+// });
+// 送信ボタンを押したら、値をdbに入れる ---子ども②--------------------------
+// $('#C2save').on('click', function () {
+//   // Add a new document in collection "cities"
+//   db.collection('family').doc('child2').set({
+//     src: $('#C2評価').attr('src'),
+//     height: $('#C2height').val(),
+//     weight: $('#C2weight').val(),
+//     sel1: $('#C2sel1').val(),
+//     sel2: $('#C2sel2').val(),
+//     sel3: $('#C2sel3').val(),
+//     sel4: $('#C2sel4').val(),
+//     sel5: $('#C2sel5').val(),
+//     sel6: $('#C2sel6').val(),
+//     sel7: $('#C2sel7').val(),
+//     sel8: $('#C2sel8').val(),
+//     sel9: $('#C2sel9').val(),
+//     sel10: $('#C2sel10').val(),
+//     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+//   })
+//     .then(() => {
+//       console.log('Document successfully written!');
+//     })
+//     .catch((error) => {
+//       console.error('Error writing document: ', error);
+//     });
+// });
 
 
 
@@ -465,3 +558,7 @@ C2_docRef.get().then((doc) => {
   // $('#sel1').value(docRef.data.sel1);
 });
 // ---------------------------------子ども②---------------------------
+
+
+// const family_total = Fsum + Msum + C1sum + C2sum;
+// console.log(family_total);
