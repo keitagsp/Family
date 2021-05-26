@@ -604,6 +604,7 @@ const data_totalF = [];
 totalF_docRef.get().then((doc) => {
   if (doc.exists) {
     data_totalF.push(doc.data());
+    console.log("お父さん合計" + data_totalF[0].sum);
   } else {
     // doc.data() will be undefined in this case
     console.log('No such document!');
@@ -618,6 +619,7 @@ const data_totalM = [];
 totalM_docRef.get().then((doc) => {
   if (doc.exists) {
     data_totalM.push(doc.data());
+    console.log("お母さん合計" + data_totalM[0].sum);
   } else {
     // doc.data() will be undefined in this case
     console.log('No such document!');
@@ -632,6 +634,7 @@ const data_totalC1 = [];
 totalC1_docRef.get().then((doc) => {
   if (doc.exists) {
     data_totalC1.push(doc.data());
+    console.log("子ども1合計" + data_totalC1[0].sum);
   } else {
     // doc.data() will be undefined in this case
     console.log('No such document!');
@@ -646,6 +649,7 @@ const data_totalC2 = [];
 totalC2_docRef.get().then((doc) => {
   if (doc.exists) {
     data_totalC2.push(doc.data());
+    console.log("子ども2合計" + data_totalC2[0].sum);
   } else {
     // doc.data() will be undefined in this case
     console.log('No such document!');
@@ -655,7 +659,7 @@ totalC2_docRef.get().then((doc) => {
   // $('#sel1').value(docRef.data.sel1);
 });
 
-// const family_tatal = data_totalF[0].sum + data_totalM[0].sum + data_totalC1[0].sum + data_totalC2[0].sum;
+const family_tatal = data_totalF[0].sum + data_totalM[0].sum + data_totalC1[0].sum + data_totalC2[0].sum;
 
 console.log("ファミリートータル" + family_tatal);
 console.log("ファミリートータル" + data_totalF[0].sum);
