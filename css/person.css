@@ -23,6 +23,10 @@ font-family: kinuta-maruminshinano-stdn,serif;
 font-weight: 400;
 font-style: normal;
 
+font-family: fot-tsukuardgothic-std,sans-serif;
+font-weight: 700;
+font-style: normal;
+
 */
 
 * { 
@@ -101,6 +105,12 @@ margin-top: 80px;
 margin-bottom: 20px;
 }
 
+.date{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
 .check{
     margin-top: 30px;
 }
@@ -127,7 +137,10 @@ outline: 0;
 }
 
 .question li{
-font-size: 20px;
+font-family: fot-tsukuardgothic-std,sans-serif;
+font-weight: 700;
+font-style: normal;
+font-size: 25px;
 }
 
 .question form{
