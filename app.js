@@ -5,7 +5,6 @@
 
 
 
-
   // saveボタンを押したら合計点を出す---------------------
   // 質問を一つの配列にする
   // 文字を数字に変換
@@ -333,15 +332,12 @@ const F_docRef = db.collection('family').doc('father');
 const data_f = [];
 F_docRef.get().then((doc) => {
   if (doc.exists) {
-    console.log('Document data:', doc.data());
+    // console.log('Document data:', doc.data());
     data_f.push(doc.data());
-    // console.log(data_f[0].Fsel1);
-    // $("#translate-img").attr("src", src);
-    console.log(data_f[0].src);
-    // $('F評価').attr('src', data_f[0].src);
-    // $('F評価').src(data_f[0].src);
+    // console.log(data_f[0].src);
+
+    $('#F評価_top').attr('src', data_f[0].src);
     $('#F評価').attr('src', data_f[0].src);
-    // $('#F評価').attr('src', '../Family/img/5.svg');
     $('#Fheight').val(data_f[0].height);
     $('#Fweight').val(data_f[0].weight);
     $('#Fsel1').val(data_f[0].sel1);
@@ -368,9 +364,10 @@ const M_docRef = db.collection('family').doc('mother');
 const data_M = [];
 M_docRef.get().then((doc) => {
   if (doc.exists) {
-    console.log('Document data:', doc.data());
+    // console.log('Document data:', doc.data());
     data_M.push(doc.data());
-    console.log(data_M[0].src);
+    // console.log(data_M[0].src);
+    $('#M評価_top').attr('src', data_M[0].src);
     $('#M評価').attr('src', data_M[0].src);
     $('#Mheight').val(data_M[0].height);
     $('#Mweight').val(data_M[0].weight);
@@ -398,9 +395,10 @@ const C1_docRef = db.collection('family').doc('child1');
 const data_C1 = [];
 C1_docRef.get().then((doc) => {
   if (doc.exists) {
-    console.log('Document data:', doc.data());
+    // console.log('Document data:', doc.data());
     data_C1.push(doc.data());
-    console.log(data_C1[0].src);
+    // console.log(data_C1[0].src);
+    $('#C1評価_top').attr('src', data_C1[0].src);
     $('#C1評価').attr('src', data_C1[0].src);
     $('#C1height').val(data_C1[0].height);
     $('#C1weight').val(data_C1[0].weight);
@@ -428,9 +426,10 @@ const C2_docRef = db.collection('family').doc('child2');
 const data_C2 = [];
 C2_docRef.get().then((doc) => {
   if (doc.exists) {
-    console.log('Document data:', doc.data());
+    // console.log('Document data:', doc.data());
     data_C2.push(doc.data());
-    console.log(data_C2[0].src);
+    // console.log(data_C2[0].src);
+    $('#C2評価_top').attr('src', data_C2[0].src);
     $('#C2評価').attr('src', data_C2[0].src);
     $('#C2height').val(data_C2[0].height);
     $('#C2weight').val(data_C2[0].weight);
