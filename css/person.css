@@ -1,0 +1,96 @@
+/* 
+font-family: vdl-yotag,sans-serif;
+font-weight: 500;
+font-style: normal; 
+
+font-family: maru-maru-gothic-alr-stdn,sans-serif;
+font-weight: 400;
+font-style: normal;
+
+font-family: tbudrgothic-std,sans-serif;
+font-weight: 700;
+font-style: normal;
+
+font-family: vdl-v7marugothic,sans-serif;
+font-weight: 800;
+font-style: normal;
+*/
+
+* { 
+margin: 0px; 
+padding: 0px; 
+box-sizing: border-box;
+}
+
+body{
+margin: 0;
+background: url(../img/back.jpg);
+background-attachment: fixed;
+background-size: cover;
+background-repeat: no-repeat;
+background-color:rgba(255,255,255,0.7);
+background-blend-mode:lighten;
+}
+
+.header{
+width: 100%;
+display: flex;
+justify-content: center;
+font-family: vdl-v7marugothic,sans-serif;
+font-weight: 800;
+font-style: normal;
+font-size: 40px;
+margin-top: 0px;
+}
+
+
+
+.header_left{
+width: 40%;
+margin-left: 100px;
+display: flex;
+}
+
+.header_left div{
+margin-right: 10px;
+}
+
+.評価{
+padding-top: 3px;
+}
+.年齢{
+padding-left: 10px;
+}
+
+.header_right{
+width: 60%;
+display: flex;
+justify-content: flex-end;
+padding-right: 20px;
+}
+
+.カレンダー{
+padding-right: 30px;
+}
+
+.main{
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+font-family: vdl-yotag,sans-serif;
+font-weight: 500;
+font-style: normal;
+}
+
+#大項目{
+font-family: vdl-yotag,sans-serif;
+font-weight: 500;
+font-style: normal;
+}
+
+.question form{
+margin-bottom: 30px;
+}
+
+

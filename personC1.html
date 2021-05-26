@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/person.css">
 
     <!-----------フォント設定用 ------------>
     <script>
         (function (d) {
             var config = {
-                kitId: 'aqu2xte',
+                kitId: 'aqulgte',
                 scriptTimeout: 3000,
                 async: true
             },
@@ -35,33 +35,25 @@
     <title>子ども①</title>
 </head>
 ​
-<style>
-    .health {
-        padding-left: 30px;
-    }
-
-    ​ .bmi {
-        padding-left: 30px;
-    }
-</style>
-​
 
 <body>
 
 
 <div class="header">
     <div class="header_left">
-        <div class="続柄">子ども2</div>
-        <div class="名前">○○</div>
-        <div class="評価" id="C1評価"><img src="../Family/img/5.svg" width="32" height="32" id="C1評価"></div>
-        <div class="年齢">４１歳</div>
+        <div class="名前">ゆうと</div>
+        <div class="評価" id="C1評価"><img src="../Family/img/5.svg" width="40" height="40" id="C1評価"></div>
+        <div class="年齢">15歳</div>
     </div>
     <div class="header_right">
-        <div class="カレンダー"><i class="far fa-calendar-alt fa-2x"></i></div>
-        <div class="掲示板"><i class="far fa-comment-dots fa-2x"></i></div>
+        <div class="カレンダー"><i class="far fa-calendar-alt fa-lg"></i></div>
+        <div class="掲示板"><i class="far fa-comment-dots fa-lg"></i></div>
     </div>
 </div>
-<h2 class="health" id="大項目">健康</h2>
+
+<div class="main">
+
+<p class="health" id="大項目">健康</p>
     ​
     <!-- BMIここから -->
     <div class="bmi">
@@ -75,13 +67,13 @@
             <input type="submit" value="チェック">
         </form>
         <div id="result"></div>
+    </div>
+    <!-- BMIここまで -->
         ​
-        <!-- BMIここまで -->
-        ​
-        <!-- 診断 子供1人目 --> 
-
+    <!-- 診断 子供1人目 --> 
+    <div class="question">
         <form action="question1">
-                <p>学校は楽しいですか？</p>
+                <li>学校は楽しいですか？</li>
                 <select id="C1sel1" name="sel01">
                     <option value="1"> とても楽しい</option>
                     <option value="2" >楽しい </option>
@@ -91,7 +83,7 @@
             </form>
 
             <form action="question2">
-                <p>自分がワクワクすることをやっていますか？</p>
+                <li>自分がワクワクすることをやっていますか？</li>
                 <select id="C1sel2" name="sel02">
                     <option value="1">やっている</option>
                     <option value="2" >やりつつある</option>
@@ -102,7 +94,7 @@
 
             
             <form action="question3">
-                <p>家族の中で何か我慢していることがありますか？</p>
+                <li>家族の中で何か我慢していることがありますか？</li>
                 <select id="C1sel3" name="sel03">
                     <option value="1">ほとんどない</option>
                     <option value="2" >あまりない</option>
@@ -112,7 +104,7 @@
             </form>
             
             <form action="question4">
-                <p>家族に言いたいことを伝えていますか？</p>
+                <li>家族に言いたいことを伝えていますか？</li>
                 <select id="C1sel4" name="sel04">
                     <option value="1">頻繁に伝えている</option>
                     <option value="2" >伝えている</option>
@@ -122,7 +114,7 @@
             </form>
             
             <form action="question5">
-                <p> 直にはあまり言えないが本当はもっと親孝行したい？</p>
+                <li> 直にはあまり言えないが本当はもっと親孝行したい？</li>
                 <select  id="C1sel5" name="sel05">
                 <option value="1">今十分できている</option>
                 <option value="2" >もっとしたいと思う</option>
@@ -131,7 +123,7 @@
                 </select>
             </form>
             <form action="question6">
-                <p>家族に何かサプライズで喜ばせたいと思ったことある？</p>
+                <li>家族に何かサプライズで喜ばせたいと思ったことある？</li>
                 <select  id="C1sel6" name="sel06">
                 <option value="1">よく思う</option>
                 <option value="2" >思う</option>
@@ -141,7 +133,7 @@
             </form>
             
             <form action="question7">
-                <p>家族に何か感謝をメッセージで残したいと思うことがある？</p>
+                <li>家族に何か感謝をメッセージで残したいと思うことがある？</li>
                 <select  id="C1sel7" name="sel07">
                 <option value="1">いつも感謝を伝えている</option>
                 <option value="2" >メッセージを残したい</option>
@@ -151,7 +143,7 @@
             </form>
             
             <form action="question8">
-                <p>家族との時間を楽しんでいますか？？</p>
+                <li>家族との時間を楽しんでいますか？？</li>
                 <select  id="C1sel8" name="sel08">
                 <option value="1">かなり楽しんでいる</option>
                 <option value="2">楽しんでいる</option>
@@ -161,7 +153,7 @@
             </form>
             
             <form action="question9">
-                <p>家族との時間は十分取れていますか？</p>
+                <li>家族との時間は十分取れていますか？</li>
                 <select  id="C1sel9" name="sel09">
                 <option value="1">よく取れている</option>
                 <option value="2">まあ取れている</option>
@@ -171,7 +163,7 @@
             </form>
             
             <form action="question10">
-                <p>家族一緒で出かけることはありますか？</p>
+                <li>家族一緒で出かけることはありますか？</li>
                 <select  id="C1sel10" name="sel10">
                 <option value="1">月1回以上ある</option>
                 <option value="2">2.3ヶ月に1回</option>
@@ -179,9 +171,11 @@
                 <option value="4">年に1回</option>
                 </select>
             </form>
-        
-            
+
+    </div>
     <!-- 診断 子供1人目ここまで -->
+
+</div>
 
 
 
