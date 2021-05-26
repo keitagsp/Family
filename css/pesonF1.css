@@ -112,7 +112,14 @@ margin-bottom: 20px;
 }
 
 .check{
-    margin-top: 30px;
+ font-size: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-left: 30px;
+padding-right: 30px;
+border: solid,1px,black;
+border-radius: 30px;
+cursor: pointer;
 }
 
 
@@ -170,4 +177,3 @@ border: solid,1px,black;
 border-radius: 30px;
 cursor: pointer;
 }
-

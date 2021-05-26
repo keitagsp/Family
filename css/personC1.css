@@ -1,0 +1,180 @@
+/* 
+font-family: vdl-yotag,sans-serif;
+font-weight: 500;
+font-style: normal; 
+
+font-family: maru-maru-gothic-alr-stdn,sans-serif;
+font-weight: 400;
+font-style: normal;
+
+font-family: tbudrgothic-std,sans-serif;
+font-weight: 700;
+font-style: normal;
+
+font-family: vdl-v7marugothic,sans-serif;
+font-weight: 700;
+font-style: normal;
+
+font-family: vdl-v7marugothic,sans-serif;
+font-weight: 800;
+font-style: normal;
+
+font-family: kinuta-maruminshinano-stdn,serif;
+font-weight: 400;
+font-style: normal;
+
+font-family: fot-tsukuardgothic-std,sans-serif;
+font-weight: 700;
+font-style: normal;
+
+*/
+
+* { 
+margin: 0px; 
+padding: 0px; 
+box-sizing: border-box;
+}
+
+body{
+margin: 0;
+background: url(../img/back.jpg);
+background-attachment: fixed;
+background-size: cover;
+background-repeat: no-repeat;
+background-color:rgba(255,255,255,0.7);
+background-blend-mode:lighten;
+}
+
+.header{
+width: 100%;
+display: flex;
+justify-content: center;
+font-family: vdl-v7marugothic,sans-serif;
+font-weight: 800;
+font-style: normal;
+font-size: 40px;
+margin-top: 0px;
+}
+
+
+
+.header_left{
+width: 40%;
+margin-left: 100px;
+display: flex;
+}
+
+.header_left div{
+margin-right: 10px;
+}
+
+.評価{
+padding-top: 3px;
+}
+.年齢{
+padding-left: 10px;
+}
+
+.header_right{
+width: 60%;
+display: flex;
+justify-content: flex-end;
+padding-right: 20px;
+}
+
+.カレンダー{
+padding-right: 30px;
+}
+
+.main{
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+font-family: maru-maru-gothic-alr-stdn,sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.大項目{
+font-family: vdl-v7marugothic,sans-serif;
+font-weight: 700;
+font-style: normal;
+font-size: 40px;
+margin-top: 80px;
+margin-bottom: 20px;
+}
+
+.date{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
+.check{
+ font-size: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-left: 30px;
+padding-right: 30px;
+border: solid,1px,black;
+border-radius: 30px;
+cursor: pointer;
+}
+
+
+.question{
+font-family: maru-maru-gothic-alr-stdn,sans-serif;
+font-weight: 400;
+font-style: normal; 
+font-size: 20px;
+}
+
+.question input{
+font-family: maru-maru-gothic-alr-stdn,sans-serif;
+font-weight: 400;
+font-style: normal; 
+font-size: 20px;
+background-color: transparent;
+background-color: transparent;
+border-right:none;
+border-left:none;
+border-top:none;
+outline: 0;
+}
+
+.question li{
+font-family: fot-tsukuardgothic-std,sans-serif;
+font-weight: 700;
+font-style: normal;
+font-size: 25px;
+}
+
+.question form{
+margin-top: 15px;
+margin-bottom: 50px;
+}
+
+.question select{
+font-size: 20px;
+margin-top: 15px;
+margin-bottom: 50px;
+margin-left: 30px;
+background-color: transparent;
+border-right:none;
+border-left:none;
+border-top:none;
+outline: 0;
+}
+
+.save button{
+font-size: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-left: 30px;
+padding-right: 30px;
+border: solid,1px,black;
+border-radius: 30px;
+cursor: pointer;
+}
+

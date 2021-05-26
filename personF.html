@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pesonF1.css">
 
     <!-----------フォント設定用 ------------>
     <script>
@@ -32,56 +32,46 @@
 
 
 
-    <title>お父さん画面</title>
+    <title>お父さん</title>
 </head>
 ​
-<style>
-    .health {
-        padding-left: 30px;
-    }
-
-    ​ .bmi {
-        padding-left: 30px;
-    }
-</style>
-​
-
 <body>
+
 
 
 <div class="header">
     <div class="header_left">
-        <div class="続柄">父</div>
-        <div class="名前">○○○</div>
-        <div class="評価"><img src="../Family/img/5.svg" width="32" height="32"  id="F評価"></div>
-        <div class="年齢">４１歳</div>
+        <div class="名前">父</div>
+        <div class="評価" id="F1評価"><img src="../Family/img/5.svg" width="40" height="40" id="F1評価"></div>
+        <div class="年齢">43歳</div>
     </div>
     <div class="header_right">
-        <div class="カレンダー"><i class="far fa-calendar-alt fa-2x"></i></div>
-        <div class="掲示板"><i class="far fa-comment-dots fa-2x"></i></div>
+        <div class="カレンダー"><i class="far fa-calendar-alt fa-lg"></i></div>
+        <div class="掲示板"><i class="far fa-comment-dots fa-lg"></i></div>
     </div>
 </div>
-<h2 class="health" id="大項目">健康</h2>
-    ​
-    <!-- BMIここから -->
-    <div class="bmi">
-        <form name="qForm" id="qForm" onsubmit="check(); return false;">
-            <div>
-                <dt>身長</dt>
-                <dd><input type="number" name="height" id="Fheight" required> cm</dd>
-                <dt>体重</dt>
-                <dd><input type="number" name="weight" id="Fweight" required> kg</dd>
-            </div>
-            <input type="submit" value="チェック">
-        </form>
-        <div id="result"></div>
-        ​
-        <!-- BMIここまで -->
-        ​
-        <!-- 診断 大人1人目 -->変更
-        ​
+
+<div class="main">
+    
+    <div class="question">
+        <p class="大項目">健康</p>
+        <div class="bmi">
+            <form name="qForm" id="qForm" onsubmit="check(); return false;">
+                <div>
+                    <li>身長</li>
+                    <div class="date"><input type="number" name="height" id="C1height" required> cm</div>
+                    <li>体重</li>
+                    <div class="date"><input type="number" name="weight" id="C1weight" required> kg</div>
+                </div>
+                <div class="check">
+                    <input type="submit" value="チェック">
+                </div>
+            </form>
+            <div id="result"></div>
+        </div>  
+
         <form action="question1">
-            <p>何か運動する習慣を継続していますか？</p>
+            <li>何か運動する習慣を継続していますか？</li>
             <select id="Fsel1" name="sel01">
                 <option value="1">週2回以上 </option>
                 <option value="2" >週1回している </option>
@@ -90,7 +80,7 @@
             </select>
         </form>
         <form action="question2">
-            <p>よく眠れてますか？</p>
+            <li>よく眠れてますか？</li>
             <select id="Fsel2" name="sel02">
                 <option value="1">眠れている</option>
                 <option value="2">まあ眠れている</option>
@@ -100,7 +90,7 @@
         </form>
         ​
         <form action="question3">
-            <p>どこか体に不調がありますか？</p>
+            <li>どこか体に不調がありますか？</li>
             <select id="Fsel3" name="sel03">
                 <option value="1">特になし</option>
                 <option value="2" >少しある</option>
@@ -108,9 +98,10 @@
                 <option value="4">かなりある</option>
             </select>
         </form>
-        ​
+
+<p class="大項目">ストレス</p>     ​
         <form action="question4">
-            <p> 何か我慢してますか？</p>
+            <li> 何か我慢してますか？</li>
             <select id="Fsel4" name="sel04">
                 <option value="1">全くない</option>
                 <option value="2">少しある</option>
@@ -118,9 +109,30 @@
                 <option value="4">毎日我慢</option>
             </select>
         </form>
+
         <form action="question5">
-            <p>家族との時間は十分取れていますか？</p>
+            <li>自分がワクワクすることをやっていますか？</li>
             <select id="Fsel5" name="sel05">
+                <option value="1">やっている</option>
+                <option value="2">やりつつある</option>
+                <option value="3">あまりやれてない</option>
+                <option value="4">ほとんどやれてない</option>
+            </select>
+        </form>
+
+        <form action="question6">
+            <li>今の生活にストレスを感じていますか？</li>
+            <select id="Fsel6" name="sel06">
+                <option value="1">感じてない</option>
+                <option value="2">あまり感じない</option>
+                <option value="3">少し感じている</option>
+                <option value="4">かなり感じている</option>
+            </select>
+        </form>
+<p class="大項目">家族</p>
+        <form action="question7">
+            <li>家族との時間は十分取れていますか？</li>
+            <select id="Fsel7" name="sel07">
                 <option value="1">十分取れている'</option>
                 <option value="2" >まあ取れている</option>
                 <option value="3">あまり取れていない</option>
@@ -128,9 +140,9 @@
             </select>
         </form>
         ​
-        <form action="question6">
-            <p>家族一緒で出かけることはありますか？</p>
-            <select id="Fsel6" name="sel06">
+        <form action="question8">
+            <li>家族一緒で出かけることはありますか？</li>
+            <select id="Fsel8" name="sel08">
                 <option value="1">月1回以上ある</option>
                 <option value="2">2.3か月に1回</option>
                 <option value="3">半年に1回</option>
@@ -138,28 +150,9 @@
             </select>
         </form>
         ​
-        <form action="question7">
-            <p>今の生活にストレスを感じていますか？</p>
-            <select id="Fsel7" name="sel07">
-                <option value="1">感じてない</option>
-                <option value="2">あまり感じない</option>
-                <option value="3">少し感じている</option>
-                <option value="4">かなり感じている</option>
-            </select>
-        </form>
-        ​
-        <form action="question8">
-            <p>自分がワクワクすることをやっていますか？</p>
-            <select id="Fsel8" name="sel08">
-                <option value="1">やっている</option>
-                <option value="2" >やりつつある</option>
-                <option value="3">あまりやれてない</option>
-                <option value="4">ほとんどやれてない</option>
-            </select>
-        </form>
         ​
         <form action="question9">
-            <p>家族に言いたいことを伝えられていますか？</p>
+            <li>家族に言いたいことを伝えられていますか？</li>
             <select id="Fsel9" name="sel09">
                 <option value="1">伝えている</option>
                 <option value="2" >だいたい伝えている</option>
@@ -169,22 +162,29 @@
         </form>
 
         <form action="question10">
-            <p> 家族との時間を楽しんでいますか？</p>
+            <li> 家族との時間を楽しんでいますか？</li>
             <select id="Fsel10" name="sel10">
                 <option value="1">かなり楽しんでいる</option>
-                <option value="2" selected>楽しんでいる</option>
+                <option value="2">楽しんでいる</option>
                 <option value="3">あまり楽しめてない</option>
                 <option value="4">ほとんど楽しめてない</option>
             </select>
         </form>
+
+    </div>
+
+                <!-- 松尾追加 ↓↓↓↓↓ -->
+                <div class="save">
+                    <button id="Fsave" type="button">記録する</button>
+                </div>
+                <!-- 松尾追加 ↑↑↑↑↑ -->
+
+</div>
     
         <!-- 大人1人目終わり -->
 
 
-        ​
-        <!-- 松尾追加 ↓↓↓↓↓ -->
-        <button id="Fsave" type="button">save</button>
-        <!-- 松尾追加 ↑↑↑↑↑ -->
+        
         ​
         <!-- script ここから-->
         ​
