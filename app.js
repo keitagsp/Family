@@ -28,6 +28,11 @@ function convertFromFirestoreTimestampToDatetime(timestamp) {
 
 
 
+
+
+
+
+
   // saveボタンを押したら合計点を出す---------------------
   // 質問を一つの配列にする
   // 文字を数字に変換
@@ -57,14 +62,15 @@ $('#Fsave').on('click', function () {
 
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
-  
-  if (sum < 13) {
-    console.log('診断5');
+  if (sum < 15) {
     $('#F評価').attr('src', '../Family/img/5.svg');
-  } else if (sum < 20) {
+  } else if (sum < 21) {
+    console.log('診断4');
+    $('#F評価').attr('src', '../Family/img/4.svg');
+  } else if (sum < 27) {
     console.log('診断3');
     $('#F評価').attr('src', '../Family/img/3.svg');
-  } else if (sum < 30) {
+  } else if (sum < 33) {
     console.log('診断2');
     $('#F評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
@@ -97,7 +103,7 @@ $('#Fsave').on('click', function () {
         console.error('Error writing document: ', error);
       });
     db.collection('family').doc('totalF').set({
-      sum: sum,
+      sumsum: sum,
       time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
     })
       .then(() => {
@@ -107,6 +113,22 @@ $('#Fsave').on('click', function () {
         console.error('Error writing document: ', error);
       });
   // });
+
+
+  // ドキュメント全体を上書きせずにドキュメントの一部のフィールドを更新するには、update()
+  const Ref = db.collection('total').doc('totaldoc');
+
+  // Set the "capital" field of the city 'DC'
+  return Ref.update({
+    sumF: sum
+  })
+  .then(() => {
+    console.log("Document successfully updated!");
+  })
+  .catch((error) => {
+    // The document probably doesn't exist.
+    console.error("Error updating document: ", error);
+  });
 
 
 });
@@ -141,18 +163,21 @@ $('#Msave').on('click', function () {
 
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
-  if (sum < 13) {
+  if (sum < 15) {
     console.log('診断5');
-    $('#F評価').attr('src', '../Family/img/5.svg');
-  } else if (sum < 20) {
+    $('#M評価').attr('src', '../Family/img/5.svg');
+  } else if (sum < 21) {
+    console.log('診断4');
+    $('#M評価').attr('src', '../Family/img/4.svg');
+  } else if (sum < 27) {
     console.log('診断3');
-    $('#F評価').attr('src', '../Family/img/3.svg');
-  } else if (sum < 30) {
+    $('#M評価').attr('src', '../Family/img/3.svg');
+  } else if (sum < 33) {
     console.log('診断2');
-    $('#F評価').attr('src', '../Family/img/2.svg');
+    $('#M評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('#F評価').attr('src', '../Family/img/1.svg');
+    $('#M評価').attr('src', '../Family/img/1.svg');
   }
 
   // 送信ボタンを押したら、値をdbに入れる ---お母さん--------------------------
@@ -179,16 +204,20 @@ $('#Msave').on('click', function () {
       .catch((error) => {
         console.error('Error writing document: ', error);
       });
-    db.collection('family').doc('totalM').set({
-      sum: sum,
-      time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-    })
-      .then(() => {
-        console.log('Document successfully written!');
-      })
-      .catch((error) => {
-        console.error('Error writing document: ', error);
-      });
+  // ドキュメント全体を上書きせずにドキュメントの一部のフィールドを更新するには、update()
+  const Ref = db.collection('total').doc('totaldoc');
+
+  // Set the "capital" field of the city 'DC'
+  return Ref.update({
+    sumM: sum
+  })
+  .then(() => {
+    console.log("Document successfully updated!");
+  })
+  .catch((error) => {
+    // The document probably doesn't exist.
+    console.error("Error updating document: ", error);
+  });
 
 
 });
@@ -222,54 +251,60 @@ $('#C1save').on('click', function () {
 
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
-  if (sum < 13) {
+  if (sum < 15) {
     console.log('診断5');
-    $('#F評価').attr('src', '../Family/img/5.svg');
-  } else if (sum < 20) {
+    $('#C1評価').attr('src', '../Family/img/5.svg');
+  } else if (sum < 21) {
+    console.log('診断4');
+    $('#C1評価').attr('src', '../Family/img/4.svg');
+  } else if (sum < 27) {
     console.log('診断3');
-    $('#F評価').attr('src', '../Family/img/3.svg');
-  } else if (sum < 30) {
+    $('#C1評価').attr('src', '../Family/img/3.svg');
+  } else if (sum < 33) {
     console.log('診断2');
-    $('#F評価').attr('src', '../Family/img/2.svg');
+    $('#C1評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('#F評価').attr('src', '../Family/img/1.svg');
+    $('#C1評価').attr('src', '../Family/img/1.svg');
   }
-    // Add a new document in collection "cities"
-    db.collection('family').doc('child1').set({
-      src: $('#C1評価').attr('src'),
-      height: $('#C1height').val(),
-      weight: $('#C1weight').val(),
-      sel1: $('#C1sel1').val(),
-      sel2: $('#C1sel2').val(),
-      sel3: $('#C1sel3').val(),
-      sel4: $('#C1sel4').val(),
-      sel5: $('#C1sel5').val(),
-      sel6: $('#C1sel6').val(),
-      sel7: $('#C1sel7').val(),
-      sel8: $('#C1sel8').val(),
-      sel9: $('#C1sel9').val(),
-      sel10: $('#C1sel10').val(),
-      time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+  // Add a new document in collection "cities"
+  db.collection('family').doc('child1').set({
+    src: $('#C1評価').attr('src'),
+    height: $('#C1height').val(),
+    weight: $('#C1weight').val(),
+    sel1: $('#C1sel1').val(),
+    sel2: $('#C1sel2').val(),
+    sel3: $('#C1sel3').val(),
+    sel4: $('#C1sel4').val(),
+    sel5: $('#C1sel5').val(),
+    sel6: $('#C1sel6').val(),
+    sel7: $('#C1sel7').val(),
+    sel8: $('#C1sel8').val(),
+    sel9: $('#C1sel9').val(),
+    sel10: $('#C1sel10').val(),
+    time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+  })
+    .then(() => {
+      console.log('Document successfully written!');
     })
-      .then(() => {
-        console.log('Document successfully written!');
-      })
-      .catch((error) => {
-        console.error('Error writing document: ', error);
-      });
-    db.collection('family').doc('totalC1').set({
-      sum: sum,
-      time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-    })
-      .then(() => {
-        console.log('Document successfully written!');
-      })
-      .catch((error) => {
-        console.error('Error writing document: ', error);
-      });
-});
+    .catch((error) => {
+      console.error('Error writing document: ', error);
+    });
+  // ドキュメント全体を上書きせずにドキュメントの一部のフィールドを更新するには、update()
+  const Ref = db.collection('total').doc('totaldoc');
 
+  // Set the "capital" field of the city 'DC'
+  return Ref.update({
+    sumC1: sum
+  })
+  .then(() => {
+    console.log("Document successfully updated!");
+  })
+  .catch((error) => {
+    // The document probably doesn't exist.
+    console.error("Error updating document: ", error);
+    });
+});
 
 
 
@@ -296,23 +331,25 @@ $('#C2save').on('click', function () {
   console.log(sum); //合計点
   const family_sumF = sum;
 
-
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
-  if (sum < 13) {
+  if (sum < 15) {
     console.log('診断5');
-    $('#F評価').attr('src', '../Family/img/5.svg');
-  } else if (sum < 20) {
+    $('#c2評価').attr('src', '../Family/img/5.svg');
+  } else if (sum < 21) {
+    console.log('診断4');
+    $('#c2評価').attr('src', '../Family/img/4.svg');
+  } else if (sum < 27) {
     console.log('診断3');
-    $('#F評価').attr('src', '../Family/img/3.svg');
-  } else if (sum < 30) {
+    $('#c2評価').attr('src', '../Family/img/3.svg');
+  } else if (sum < 33) {
     console.log('診断2');
-    $('#F評価').attr('src', '../Family/img/2.svg');
+    $('#c2評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('#F評価').attr('src', '../Family/img/1.svg');
+    $('#c2評価').attr('src', '../Family/img/1.svg');
   }
-// 送信ボタンを押したら、値をdbに入れる ---子ども②--------------------------
+  // 送信ボタンを押したら、値をdbに入れる ---子ども②--------------------------
   // Add a new document in collection "cities"
   db.collection('family').doc('child2').set({
     src: $('#C2評価').attr('src'),
@@ -328,7 +365,6 @@ $('#C2save').on('click', function () {
     sel8: $('#C2sel8').val(),
     sel9: $('#C2sel9').val(),
     sel10: $('#C2sel10').val(),
-    sum: sum,
     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
   })
   .then(() => {
@@ -337,134 +373,28 @@ $('#C2save').on('click', function () {
   .catch((error) => {
     console.error('Error writing document: ', error);
   });
-  db.collection('family').doc('totalC2').set({
-    sum: sum,
-    time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+
+
+  // ドキュメント全体を上書きせずにドキュメントの一部のフィールドを更新するには、update()
+  const Ref = db.collection('total').doc('totaldoc');
+
+  // Set the "capital" field of the city 'DC'
+  return Ref.update({
+    sumC2: sum
   })
   .then(() => {
-    console.log('Document successfully written!');
+    console.log("Document successfully updated!");
   })
   .catch((error) => {
-    console.error('Error writing document: ', error);
+    // The document probably doesn't exist.
+    console.error("Error updating document: ", error);
   });
-  
 });
 
 
 
 
 
-
-
-
-
-
-
-// 送信ボタンを押したら、値をdbに入れる ---お父さん--------------------------
-// $('#Fsave').on('click', function () {
-//   // Add a new document in collection "cities"
-//   db.collection('family').doc('father').set({
-//     src: $('#F評価').attr('src'),
-//     height: $('#Fheight').val(),
-//     weight: $('#Fweight').val(),
-//     sel1: $('#Fsel1').val(),
-//     sel2: $('#Fsel2').val(),
-//     sel3: $('#Fsel3').val(),
-//     sel4: $('#Fsel4').val(),
-//     sel5: $('#Fsel5').val(),
-//     sel6: $('#Fsel6').val(),
-//     sel7: $('#Fsel7').val(),
-//     sel8: $('#Fsel8').val(),
-//     sel9: $('#Fsel9').val(),
-//     sel10: $('#Fsel10').val(),
-//     // sum: Fsum,
-//     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-//   })
-//     .then(() => {
-//       console.log('Document successfully written!');
-//     })
-//     .catch((error) => {
-//       console.error('Error writing document: ', error);
-//     });
-// });
-// 送信ボタンを押したら、値をdbに入れる ---お母さん--------------------------
-// $('#Msave').on('click', function () {
-//   // Add a new document in collection "cities"
-//   db.collection('family').doc('mother').set({
-//     src: $('#M評価').attr('src'),
-//     height: $('#Mheight').val(),
-//     weight: $('#Mweight').val(),
-//     sel1: $('#Msel1').val(),
-//     sel2: $('#Msel2').val(),
-//     sel3: $('#Msel3').val(),
-//     sel4: $('#Msel4').val(),
-//     sel5: $('#Msel5').val(),
-//     sel6: $('#Msel6').val(),
-//     sel7: $('#Msel7').val(),
-//     sel8: $('#Msel8').val(),
-//     sel9: $('#Msel9').val(),
-//     sel10: $('#Msel10').val(),
-//     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-//   })
-//     .then(() => {
-//       console.log('Document successfully written!');
-//     })
-//     .catch((error) => {
-//       console.error('Error writing document: ', error);
-//     });
-// });
-// 送信ボタンを押したら、値をdbに入れる ---子ども①--------------------------
-// $('#C1save').on('click', function () {
-//   // Add a new document in collection "cities"
-//   db.collection('family').doc('child1').set({
-//     src: $('#C1評価').attr('src'),
-//     height: $('#C1height').val(),
-//     weight: $('#C1weight').val(),
-//     sel1: $('#C1sel1').val(),
-//     sel2: $('#C1sel2').val(),
-//     sel3: $('#C1sel3').val(),
-//     sel4: $('#C1sel4').val(),
-//     sel5: $('#C1sel5').val(),
-//     sel6: $('#C1sel6').val(),
-//     sel7: $('#C1sel7').val(),
-//     sel8: $('#C1sel8').val(),
-//     sel9: $('#C1sel9').val(),
-//     sel10: $('#C1sel10').val(),
-//     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-//   })
-//     .then(() => {
-//       console.log('Document successfully written!');
-//     })
-//     .catch((error) => {
-//       console.error('Error writing document: ', error);
-//     });
-// });
-// 送信ボタンを押したら、値をdbに入れる ---子ども②--------------------------
-// $('#C2save').on('click', function () {
-//   // Add a new document in collection "cities"
-//   db.collection('family').doc('child2').set({
-//     src: $('#C2評価').attr('src'),
-//     height: $('#C2height').val(),
-//     weight: $('#C2weight').val(),
-//     sel1: $('#C2sel1').val(),
-//     sel2: $('#C2sel2').val(),
-//     sel3: $('#C2sel3').val(),
-//     sel4: $('#C2sel4').val(),
-//     sel5: $('#C2sel5').val(),
-//     sel6: $('#C2sel6').val(),
-//     sel7: $('#C2sel7').val(),
-//     sel8: $('#C2sel8').val(),
-//     sel9: $('#C2sel9').val(),
-//     sel10: $('#C2sel10').val(),
-//     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-//   })
-//     .then(() => {
-//       console.log('Document successfully written!');
-//     })
-//     .catch((error) => {
-//       console.error('Error writing document: ', error);
-//     });
-// });
 
 
 
@@ -597,14 +527,43 @@ C2_docRef.get().then((doc) => {
 // ---------------------------------子ども②---------------------------
 
 
-
-
-const totalF_docRef = db.collection('family').doc('totalF');
-const data_totalF = [];
-totalF_docRef.get().then((doc) => {
+const total_docRef = db.collection('total').doc('totaldoc');
+const data_total = [];
+total_docRef.get().then((doc) => {
   if (doc.exists) {
-    data_totalF.push(doc.data());
-    console.log("お父さん合計" + data_totalF[0].sum);
+    // console.log('Document data:', doc.data());
+
+    data_total.push(doc.data());
+    // console.log(data_C2[0].src);
+
+    const all = (data_total[0].sumF + data_total[0].sumM + data_total[0].sumC1 + data_total[0].sumC2) / 4;
+    console.log(all);
+    // 判定----------------------
+    // 1点〜4点 10門 一番良い 10点 一番悪い 40点
+    if (all < 15) {
+      console.log('診断5');
+      $('#total').attr('src', '../Family/img/big5.svg');
+    } else if (all < 21) {
+      console.log('診断4');
+      $('#total').attr('src', '../Family/img/big4.svg');
+    } else if (all < 27) {
+      console.log('診断3');
+      $('#total').attr('src', '../Family/img/big3.svg');
+    } else if (all < 33) {
+      console.log('診断2');
+      $('#total').attr('src', '../Family/img/big2.svg');
+    } else if (all < 41) {
+      console.log('診断1');
+      $('#total').attr('src', '../Family/img/big1.svg');
+    }
+
+
+
+    // src = "img/big4.svg"
+
+    // $('#F評価').attr('src', '../Family/img/3.svg');
+
+
   } else {
     // doc.data() will be undefined in this case
     console.log('No such document!');
@@ -614,72 +573,6 @@ totalF_docRef.get().then((doc) => {
   // $('#sel1').value(docRef.data.sel1);
 });
 
-const totalM_docRef = db.collection('family').doc('totalM');
-const data_totalM = [];
-totalM_docRef.get().then((doc) => {
-  if (doc.exists) {
-    data_totalM.push(doc.data());
-    console.log("お母さん合計" + data_totalM[0].sum);
-  } else {
-    // doc.data() will be undefined in this case
-    console.log('No such document!');
-  }
-}).catch((error) => {
-  console.log('Error getting document:', error);
-  // $('#sel1').value(docRef.data.sel1);
-});
-
-const totalC1_docRef = db.collection('family').doc('totalC1');
-const data_totalC1 = [];
-totalC1_docRef.get().then((doc) => {
-  if (doc.exists) {
-    data_totalC1.push(doc.data());
-    console.log("子ども1合計" + data_totalC1[0].sum);
-  } else {
-    // doc.data() will be undefined in this case
-    console.log('No such document!');
-  }
-}).catch((error) => {
-  console.log('Error getting document:', error);
-  // $('#sel1').value(docRef.data.sel1);
-});
-
-const totalC2_docRef = db.collection('family').doc('totalC2');
-const data_totalC2 = [];
-totalC2_docRef.get().then((doc) => {
-  if (doc.exists) {
-    data_totalC2.push(doc.data());
-    console.log("子ども2合計" + data_totalC2[0].sum);
-  } else {
-    // doc.data() will be undefined in this case
-    console.log('No such document!');
-  }
-}).catch((error) => {
-  console.log('Error getting document:', error);
-  // $('#sel1').value(docRef.data.sel1);
-});
-
-const family_tatal = data_totalF[0].sum + data_totalM[0].sum + data_totalC1[0].sum + data_totalC2[0].sum;
-
-console.log("ファミリートータル" + family_tatal);
-console.log("ファミリートータル" + data_totalF[0].sum);
-
-// 判定----------------------
-// 1点〜4点 10門 一番良い 10点 一番悪い 40点
-if (sum < 13) {
-  console.log('診断5');
-  $('#F評価').attr('src', '../Family/img/5.svg');
-} else if (sum < 20) {
-  console.log('診断3');
-  $('#F評価').attr('src', '../Family/img/3.svg');
-} else if (sum < 30) {
-  console.log('診断2');
-  $('#F評価').attr('src', '../Family/img/2.svg');
-} else if (sum < 41) {
-  console.log('診断1');
-  $('#F評価').attr('src', '../Family/img/1.svg');
-}
 
 
 
-$('#total').val(data_C2[0].sel5);
