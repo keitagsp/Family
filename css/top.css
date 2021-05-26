@@ -175,3 +175,18 @@ nav.globalMenuSp.active {
 opacity: 100;
 }
 /* ハンバーガーボタン 終わり*/
+
+/* カレンダーここから */
+
+a{
+  color:black;
+  font-size: 30px;
+  text-decoration: none;
+} 
+.calendar{
+  position: fixed;
+  top:100px;
+  right: 20px;
+  ;
+}
+/* カレンダーここまで */
