@@ -33,13 +33,13 @@ background-blend-mode:lighten;
 }
 
 .header{
-width: 100%;
+width: 95%;
 display: flex;
 font-family: vdl-v7marugothic,sans-serif;
 font-weight: 800;
 font-style: normal;
-font-size: 30px;
-margin-left: 30px;
+font-size: 38px;
+margin-left: 40px;
 }
 
 .header a{
@@ -49,19 +49,30 @@ cursor: pointer;
 padding-right: 40px;
 }
 
+.header_left{
+width: 50%;
+display: flex;
+}
+
 
 .続柄{
-padding-right: 8px;
+padding-right: 15px;
 }
 
 .評価{
 padding-top: 3px;
 }
 
+.header_right{
+width: 50%;
+display: flex;
+justify-content: flex-end;
+}
+
 .カレンダー{
 padding-right: 30px;
 }
-
+/* 
 #大項目{
 font-family: vdl-yotag,sans-serif;
 font-weight: 500;
@@ -74,4 +85,4 @@ font-style: normal;
 
 .bmi{
   padding-left: 30px;
-}
+} */
