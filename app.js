@@ -1,6 +1,12 @@
+
+// const family_total = Fsum + Msum + C1sum + C2sum;
+// console.log(family_total);
+
 // 家族合計
-// const family_tatal = family_sumF + family_sumM + family_sumC1 + family_sumC2;
-// console.log(family_tatal);
+// let Fsum;
+// let Msum;
+// let C1sum;
+// let C2sum;
 
 
 
@@ -31,6 +37,7 @@ $('#Fsave').on('click', function () {
     k++;
   }
   console.log(sum); //合計点
+  Fsum = sum;
 
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
@@ -76,6 +83,8 @@ $('#Msave').on('click', function () {
   console.log(sum); //合計点
   const family_sumF = sum;
 
+  Msum = sum;
+
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
   if (sum < 13) {
@@ -118,6 +127,8 @@ $('#C1save').on('click', function () {
   console.log(sum); //合計点
   const family_sumF = sum;
 
+  C1sum = sum;
+
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
   if (sum < 13) {
@@ -159,6 +170,8 @@ $('#C2save').on('click', function () {
   }
   console.log(sum); //合計点
   const family_sumF = sum;
+
+  C2sum = sum;
 
   // 判定----------------------
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
