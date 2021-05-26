@@ -38,19 +38,19 @@ $('#Fsave').on('click', function () {
   
   if (sum < 13) {
     console.log('診断5');
-    $('#F評価').children('img').attr('src', '../Family/img/5.svg');
+    $('#F評価').attr('src', '../Family/img/5.svg');
   } else if (sum < 23) {
     console.log('診断4');
-    $('#F評価').children('img').attr('src', '../Family/img/4.svg');
+    $('#F評価').attr('src', '../Family/img/4.svg');
   } else if (sum < 28) {
     console.log('診断3');
-    $('#F評価').children('img').attr('src', '../Family/img/3.svg');
+    $('#F評価').attr('src', '../Family/img/3.svg');
   } else if (sum < 35) {
     console.log('診断2');
-    $('#F評価').children('img').attr('src', '../Family/img/2.svg');
+    $('#F評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('#F評価').children('img').attr('src', '../Family/img/1.svg');
+    $('#F評価').attr('src', '../Family/img/1.svg');
   }
 });
 
@@ -256,7 +256,7 @@ function convertFromFirestoreTimestampToDatetime(timestamp) {
 $('#Fsave').on('click', function () {
   // Add a new document in collection "cities"
   db.collection('family').doc('father').set({
-
+    src: $('#F評価').attr('src'),
     height: $('#Fheight').val(),
     weight: $('#Fweight').val(),
     sel1: $('#Fsel1').val(),
@@ -280,38 +280,38 @@ $('#Fsave').on('click', function () {
 });
 
 // get() を使用して単一のドキュメントの内容を取得する
-
-const docRef = db.collection('family').doc('father');
-const data_f = [];
-docRef.get().then((doc) => {
-  if (doc.exists) {
-    console.log('Document data:', doc.data());
-    data_f.push(doc.data());
-    // console.log(data_f[0].Fsel1);
-
-
-    $('#Fheight').val(data_f[0].height);
-    $('#Fweight').val(data_f[0].weight);
-
-    $('#Fsel1').val(data_f[0].sel1);
-    $('#Fsel2').val(data_f[0].sel2);
-    $('#Fsel3').val(data_f[0].sel3);
-    $('#Fsel4').val(data_f[0].sel4);
-    $('#Fsel5').val(data_f[0].sel5);
-    $('#Fsel6').val(data_f[0].sel6);
-    $('#Fsel7').val(data_f[0].sel7);
-    $('#Fsel8').val(data_f[0].sel8);
-    $('#Fsel9').val(data_f[0].sel9);
-    $('#Fsel10').val(data_f[0].sel10);
-  } else {
-    // doc.data() will be undefined in this case
-    console.log('No such document!');
-  }
-}).catch((error) => {
-  console.log('Error getting document:', error);
-});
-// $('#sel1').value(docRef.data.sel1);
-
+// $(window).on('load', function () {
+  const docRef = db.collection('family').doc('father');
+  const data_f = [];
+  docRef.get().then((doc) => {
+    if (doc.exists) {
+      console.log('Document data:', doc.data());
+      data_f.push(doc.data());
+      // console.log(data_f[0].Fsel1);
+      // $("#translate-img").attr("src", src);
+      console.log(data_f[0].src);
+      $('F評価').attr('src', data_f[0].src);
+      $('#Fheight').value(data_f[0].height);
+      $('#Fweight').value(data_f[0].weight);
+      $('#Fsel1').val(data_f[0].sel1);
+      $('#Fsel2').val(data_f[0].sel2);
+      $('#Fsel3').val(data_f[0].sel3);
+      $('#Fsel4').val(data_f[0].sel4);
+      $('#Fsel5').val(data_f[0].sel5);
+      $('#Fsel6').val(data_f[0].sel6);
+      $('#Fsel7').val(data_f[0].sel7);
+      $('#Fsel8').val(data_f[0].sel8);
+      $('#Fsel9').val(data_f[0].sel9);
+      $('#Fsel10').val(data_f[0].sel10);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!');
+    }
+  }).catch((error) => {
+    console.log('Error getting document:', error);
+  });
+  // $('#sel1').value(docRef.data.sel1);
+// });
 
   // const data = {
   //   // nameはfirebaseのフィールド名
