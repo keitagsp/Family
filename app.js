@@ -88,6 +88,15 @@ $('#Fsave').on('click', function () {
       sel8: $('#Fsel8').val(),
       sel9: $('#Fsel9').val(),
       sel10: $('#Fsel10').val(),
+      time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+    })
+      .then(() => {
+        console.log('Document successfully written!');
+      })
+      .catch((error) => {
+        console.error('Error writing document: ', error);
+      });
+    db.collection('family').doc('totalF').set({
       sum: sum,
       time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
     })
@@ -162,6 +171,15 @@ $('#Msave').on('click', function () {
       sel8: $('#Msel8').val(),
       sel9: $('#Msel9').val(),
       sel10: $('#Msel10').val(),
+      time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+    })
+      .then(() => {
+        console.log('Document successfully written!');
+      })
+      .catch((error) => {
+        console.error('Error writing document: ', error);
+      });
+    db.collection('family').doc('totalM').set({
       sum: sum,
       time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
     })
@@ -232,6 +250,15 @@ $('#C1save').on('click', function () {
       sel8: $('#C1sel8').val(),
       sel9: $('#C1sel9').val(),
       sel10: $('#C1sel10').val(),
+      time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+    })
+      .then(() => {
+        console.log('Document successfully written!');
+      })
+      .catch((error) => {
+        console.error('Error writing document: ', error);
+      });
+    db.collection('family').doc('totalC1').set({
       sum: sum,
       time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
     })
@@ -301,6 +328,16 @@ $('#C2save').on('click', function () {
     sel8: $('#C2sel8').val(),
     sel9: $('#C2sel9').val(),
     sel10: $('#C2sel10').val(),
+    sum: sum,
+    time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+  })
+  .then(() => {
+    console.log('Document successfully written!');
+  })
+  .catch((error) => {
+    console.error('Error writing document: ', error);
+  });
+  db.collection('family').doc('totalC2').set({
     sum: sum,
     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
   })
@@ -560,5 +597,85 @@ C2_docRef.get().then((doc) => {
 // ---------------------------------子ども②---------------------------
 
 
-// const family_total = Fsum + Msum + C1sum + C2sum;
-// console.log(family_total);
+
+
+const totalF_docRef = db.collection('family').doc('totalF');
+const data_totalF = [];
+totalF_docRef.get().then((doc) => {
+  if (doc.exists) {
+    data_totalF.push(doc.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+  }
+}).catch((error) => {
+  console.log('Error getting document:', error);
+  // $('#sel1').value(docRef.data.sel1);
+});
+
+const totalM_docRef = db.collection('family').doc('totalM');
+const data_totalM = [];
+totalM_docRef.get().then((doc) => {
+  if (doc.exists) {
+    data_totalM.push(doc.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+  }
+}).catch((error) => {
+  console.log('Error getting document:', error);
+  // $('#sel1').value(docRef.data.sel1);
+});
+
+const totalC1_docRef = db.collection('family').doc('totalC1');
+const data_totalC1 = [];
+totalC1_docRef.get().then((doc) => {
+  if (doc.exists) {
+    data_totalC1.push(doc.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+  }
+}).catch((error) => {
+  console.log('Error getting document:', error);
+  // $('#sel1').value(docRef.data.sel1);
+});
+
+const totalC2_docRef = db.collection('family').doc('totalC2');
+const data_totalC2 = [];
+totalC2_docRef.get().then((doc) => {
+  if (doc.exists) {
+    data_totalC2.push(doc.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+  }
+}).catch((error) => {
+  console.log('Error getting document:', error);
+  // $('#sel1').value(docRef.data.sel1);
+});
+
+// const family_tatal = data_totalF[0].sum + data_totalM[0].sum + data_totalC1[0].sum + data_totalC2[0].sum;
+
+console.log("ファミリートータル" + family_tatal);
+console.log("ファミリートータル" + data_totalF[0].sum);
+
+// 判定----------------------
+// 1点〜4点 10門 一番良い 10点 一番悪い 40点
+if (sum < 13) {
+  console.log('診断5');
+  $('#F評価').attr('src', '../Family/img/5.svg');
+} else if (sum < 20) {
+  console.log('診断3');
+  $('#F評価').attr('src', '../Family/img/3.svg');
+} else if (sum < 30) {
+  console.log('診断2');
+  $('#F評価').attr('src', '../Family/img/2.svg');
+} else if (sum < 41) {
+  console.log('診断1');
+  $('#F評価').attr('src', '../Family/img/1.svg');
+}
+
+
+
+$('#total').val(data_C2[0].sel5);
