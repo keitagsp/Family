@@ -81,19 +81,19 @@ $('#Msave').on('click', function () {
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
   if (sum < 13) {
     console.log('診断5');
-    $('.評価').children('img').attr('src', '../Family/img/5.svg');
+    $('#M評価').attr('src', '../Family/img/5.svg');
   } else if (sum < 23) {
     console.log('診断4');
-    $('.評価').children('img').attr('src', '../Family/img/4.svg');
+    $('#M評価').attr('src', '../Family/img/4.svg');
   } else if (sum < 28) {
     console.log('診断3');
-    $('.評価').children('img').attr('src', '../Family/img/3.svg');
+    $('#M評価').attr('src', '../Family/img/3.svg');
   } else if (sum < 35) {
     console.log('診断2');
-    $('.評価').children('img').attr('src', '../Family/img/2.svg');
+    $('#M評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('.評価').children('img').attr('src', '../Family/img/1.svg');
+    $('#M評価').attr('src', '../Family/img/1.svg');
   }
 });
 // 子ども1-----------------------------------------------
@@ -123,19 +123,19 @@ $('#C1save').on('click', function () {
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
   if (sum < 13) {
     console.log('診断5');
-    $('.評価').children('img').attr('src', '../Family/img/5.svg');
+    $('#C1評価').attr('src', '../Family/img/5.svg');
   } else if (sum < 23) {
     console.log('診断4');
-    $('.評価').children('img').attr('src', '../Family/img/4.svg');
+    $('#C1評価').attr('src', '../Family/img/4.svg');
   } else if (sum < 28) {
     console.log('診断3');
-    $('.評価').children('img').attr('src', '../Family/img/3.svg');
+    $('#C1評価').attr('src', '../Family/img/3.svg');
   } else if (sum < 35) {
     console.log('診断2');
-    $('.評価').children('img').attr('src', '../Family/img/2.svg');
+    $('#C1評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('.評価').children('img').attr('src', '../Family/img/1.svg');
+    $('#C1評価').attr('src', '../Family/img/1.svg');
   }
 });
 // 子ども2-----------------------------------------------
@@ -165,19 +165,19 @@ $('#C2save').on('click', function () {
   // 1点〜4点 10門 一番良い 10点 一番悪い 40点
   if (sum < 13) {
     console.log('診断5');
-    $('.評価').children('img').attr('src', '../Family/img/5.svg');
+    $('#C2評価').attr('src', '../Family/img/5.svg');
   } else if (sum < 23) {
     console.log('診断4');
-    $('.評価').children('img').attr('src', '../Family/img/4.svg');
+    $('#C2評価').attr('src', '../Family/img/4.svg');
   } else if (sum < 28) {
     console.log('診断3');
-    $('.評価').children('img').attr('src', '../Family/img/3.svg');
+    $('#C2評価').attr('src', '../Family/img/3.svg');
   } else if (sum < 35) {
     console.log('診断2');
-    $('.評価').children('img').attr('src', '../Family/img/2.svg');
+    $('#C2評価').attr('src', '../Family/img/2.svg');
   } else if (sum < 41) {
     console.log('診断1');
-    $('.評価').children('img').attr('src', '../Family/img/1.svg');
+    $('#C2評価').attr('src', '../Family/img/1.svg');
   }
 });
 
@@ -192,34 +192,6 @@ $('#C2save').on('click', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// The core Firebase JS SDK is always required and must be listed first
-
-
-
-
-// const firebase = require("firebase");
-// // Required for side-effects
-// require("firebase/firestore");
-
-// Your web app's Firebase configuration
-
-
-
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyBr-SK7_M-dnsl7MRCFzyPk-vyyAizUe28",
@@ -231,11 +203,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// cloud firestoreの場所を定義 4人分
-// var db_f = firebase.firestore().collection('father')
-// var db_m = firebase.firestore().collection('mother')
-// var db_c1 = firebase.firestore().collection('child1')
-// var db_c2 = firebase.firestore().collection('child2')
 firebase.analytics();
 
 var db = firebase.firestore();
@@ -252,7 +219,7 @@ function convertFromFirestoreTimestampToDatetime(timestamp) {
   return `${Y}/${m}/${d} ${H}:${i}:${s}`;
 }
 
-// 送信ボタンを押したら、値をdbに入れる--------------------------
+// 送信ボタンを押したら、値をdbに入れる ---お父さん--------------------------
 $('#Fsave').on('click', function () {
   // Add a new document in collection "cities"
   db.collection('family').doc('father').set({
@@ -278,114 +245,211 @@ $('#Fsave').on('click', function () {
       console.error('Error writing document: ', error);
     });
 });
+// 送信ボタンを押したら、値をdbに入れる ---お母さん--------------------------
+$('#Msave').on('click', function () {
+  // Add a new document in collection "cities"
+  db.collection('family').doc('mother').set({
+    src: $('#M評価').attr('src'),
+    height: $('#Mheight').val(),
+    weight: $('#Mweight').val(),
+    sel1: $('#Msel1').val(),
+    sel2: $('#Msel2').val(),
+    sel3: $('#Msel3').val(),
+    sel4: $('#Msel4').val(),
+    sel5: $('#Msel5').val(),
+    sel6: $('#Msel6').val(),
+    sel7: $('#Msel7').val(),
+    sel8: $('#Msel8').val(),
+    sel9: $('#Msel9').val(),
+    sel10: $('#Msel10').val(),
+    time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+  })
+    .then(() => {
+      console.log('Document successfully written!');
+    })
+    .catch((error) => {
+      console.error('Error writing document: ', error);
+    });
+});
+// 送信ボタンを押したら、値をdbに入れる ---子ども①--------------------------
+$('#C1save').on('click', function () {
+  // Add a new document in collection "cities"
+  db.collection('family').doc('child1').set({
+    src: $('#C1評価').attr('src'),
+    height: $('#C1height').val(),
+    weight: $('#C1weight').val(),
+    sel1: $('#C1sel1').val(),
+    sel2: $('#C1sel2').val(),
+    sel3: $('#C1sel3').val(),
+    sel4: $('#C1sel4').val(),
+    sel5: $('#C1sel5').val(),
+    sel6: $('#C1sel6').val(),
+    sel7: $('#C1sel7').val(),
+    sel8: $('#C1sel8').val(),
+    sel9: $('#C1sel9').val(),
+    sel10: $('#C1sel10').val(),
+    time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+  })
+    .then(() => {
+      console.log('Document successfully written!');
+    })
+    .catch((error) => {
+      console.error('Error writing document: ', error);
+    });
+});
+// 送信ボタンを押したら、値をdbに入れる ---子ども②--------------------------
+$('#C2save').on('click', function () {
+  // Add a new document in collection "cities"
+  db.collection('family').doc('child2').set({
+    src: $('#C2評価').attr('src'),
+    height: $('#C2height').val(),
+    weight: $('#C2weight').val(),
+    sel1: $('#C2sel1').val(),
+    sel2: $('#C2sel2').val(),
+    sel3: $('#C2sel3').val(),
+    sel4: $('#C2sel4').val(),
+    sel5: $('#C2sel5').val(),
+    sel6: $('#C2sel6').val(),
+    sel7: $('#C2sel7').val(),
+    sel8: $('#C2sel8').val(),
+    sel9: $('#C2sel9').val(),
+    sel10: $('#C2sel10').val(),
+    time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
+  })
+    .then(() => {
+      console.log('Document successfully written!');
+    })
+    .catch((error) => {
+      console.error('Error writing document: ', error);
+    });
+});
 
-// get() を使用して単一のドキュメントの内容を取得する
-// $(window).on('load', function () {
-  const docRef = db.collection('family').doc('father');
-  const data_f = [];
-  docRef.get().then((doc) => {
-    if (doc.exists) {
-      console.log('Document data:', doc.data());
-      data_f.push(doc.data());
-      // console.log(data_f[0].Fsel1);
-      // $("#translate-img").attr("src", src);
-      console.log(data_f[0].src);
-      $('F評価').attr('src', data_f[0].src);
-      $('#Fheight').value(data_f[0].height);
-      $('#Fweight').value(data_f[0].weight);
-      $('#Fsel1').val(data_f[0].sel1);
-      $('#Fsel2').val(data_f[0].sel2);
-      $('#Fsel3').val(data_f[0].sel3);
-      $('#Fsel4').val(data_f[0].sel4);
-      $('#Fsel5').val(data_f[0].sel5);
-      $('#Fsel6').val(data_f[0].sel6);
-      $('#Fsel7').val(data_f[0].sel7);
-      $('#Fsel8').val(data_f[0].sel8);
-      $('#Fsel9').val(data_f[0].sel9);
-      $('#Fsel10').val(data_f[0].sel10);
-    } else {
-      // doc.data() will be undefined in this case
-      console.log('No such document!');
-    }
-  }).catch((error) => {
-    console.log('Error getting document:', error);
-  });
+
+
+
+
+// get() を使用して単一のドキュメントの内容を取得する----------お父さん----------------------------
+const F_docRef = db.collection('family').doc('father');
+const data_f = [];
+F_docRef.get().then((doc) => {
+  if (doc.exists) {
+    console.log('Document data:', doc.data());
+    data_f.push(doc.data());
+    // console.log(data_f[0].Fsel1);
+    // $("#translate-img").attr("src", src);
+    console.log(data_f[0].src);
+    // $('F評価').attr('src', data_f[0].src);
+    // $('F評価').src(data_f[0].src);
+    $('#F評価').attr('src', data_f[0].src);
+    // $('#F評価').attr('src', '../Family/img/5.svg');
+    $('#Fheight').val(data_f[0].height);
+    $('#Fweight').val(data_f[0].weight);
+    $('#Fsel1').val(data_f[0].sel1);
+    $('#Fsel2').val(data_f[0].sel2);
+    $('#Fsel3').val(data_f[0].sel3);
+    $('#Fsel4').val(data_f[0].sel4);
+    $('#Fsel5').val(data_f[0].sel5);
+    $('#Fsel6').val(data_f[0].sel6);
+    $('#Fsel7').val(data_f[0].sel7);
+    $('#Fsel8').val(data_f[0].sel8);
+    $('#Fsel9').val(data_f[0].sel9);
+    $('#Fsel10').val(data_f[0].sel10);
+  } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+  }
+}).catch((error) => {
+  console.log('Error getting document:', error);
   // $('#sel1').value(docRef.data.sel1);
-// });
-
-  // const data = {
-  //   // nameはfirebaseのフィールド名
-  //   height: $('#height').val(),
-  //   weight: $('#weight').val(),
-  //   sel1: $('#sel1').val(),
-  //   sel2: $('#sel2').val(),
-  //   sel3: $('#sel3').val(),
-  //   sel4: $('#sel4').val(),
-  //   sel5: $('#sel5').val(),
-  //   sel6: $('#sel6').val(),
-  //   sel7: $('#sel7').val(),
-  //   sel8: $('#sel8').val(),
-  //   sel9: $('#sel9').val(),
-  //   sel10: $('#sel10').val(),
-  //   time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
-  // };
-  // // dbにデータを入れる
-  // db_f.add(data);
-  // 空白にする
-  // $('#text').val('');
-
-// $('#sel1').value(dataArray[dataArray.length - 1].data.sel1);
-
-
-
-// // 単一のドキュメントを作成または上書きするには、set()
-
-// //  データ受信処理のコード    最後に保存したデータを取得する-----------------------------------
-// // snapshotの中、docに欲しい物が入ってる。
-// // onSnapshot オンライン上のデータベースでデータの追加・削除・変更が行われたタイミングで{}内が動いてリアルタイムに反映できる
-// // querySnapshot chat10の中身全部が入っているところ
-// db_f.orderBy('time', 'asc').onSnapshot(function (querySnapshot) {
-//   const dataArray = [];
-//   // docの中の下記が欲しいからforEachでdocの回数分処理する
-//   querySnapshot.docs.forEach(function (doc) {
-//     // data→name, text, timeやらが入ってる
-//     // ↑２つを dataオブジェクトにする
-//     const data = {
-//       // id→ドキュメント名（ランダム英数字のやつ）
-//       id: doc.id,
-//       // data()の中には配列dataのname,text,timeのが入っている
-//       data: doc.data(),
-//     };
-//     // dataオブジェクトをdataArray配列(javasprictの形の配列)に追加(修正や変更はpushじゃない）
-//     dataArray.push(data);
-//   });
-//   console.log(dataArray);
-//   console.log(dataArray[dataArray.length - 1].data.sel1);
-//   db_f_last.add(dataArray);
-
-// });
-
-
-// $("#sel1").val(dataArray[dataArray.length - 1].data.sel1);
-
-// イベント名	イベントを発生させるタイミング	取得が推奨されるパラメータ	パラメータ説明
-// login	ユーザーがログインしたとき	method	ログイン方法（Email Address、Goog
-
-// 最終データをwebを開いた時に反映させる
-// データは空っぽではない設定
-  // $('#sel1').value(dataArray[dataArray.length - 1].data.sel1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+});
+// ---------------------------------お父さん---------------------------
+// get() を使用して単一のドキュメントの内容を取得する----------お母さん----------------------------
+const M_docRef = db.collection('family').doc('mother');
+const data_M = [];
+M_docRef.get().then((doc) => {
+  if (doc.exists) {
+    console.log('Document data:', doc.data());
+    data_M.push(doc.data());
+    console.log(data_M[0].src);
+    $('#M評価').attr('src', data_M[0].src);
+    $('#Mheight').val(data_M[0].height);
+    $('#Mweight').val(data_M[0].weight);
+    $('#Msel1').val(data_M[0].sel1);
+    $('#Msel2').val(data_M[0].sel2);
+    $('#Msel3').val(data_M[0].sel3);
+    $('#Msel4').val(data_M[0].sel4);
+    $('#Msel5').val(data_M[0].sel5);
+    $('#Msel6').val(data_M[0].sel6);
+    $('#Msel7').val(data_M[0].sel7);
+    $('#Msel8').val(data_M[0].sel8);
+    $('#Msel9').val(data_M[0].sel9);
+    $('#Msel10').val(data_M[0].sel10);
+  } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+  }
+}).catch((error) => {
+  console.log('Error getting document:', error);
+  // $('#sel1').value(docRef.data.sel1);
+});
+// ---------------------------------お母さん---------------------------
+// get() を使用して単一のドキュメントの内容を取得する----------子ども①----------------------------
+const C1_docRef = db.collection('family').doc('child1');
+const data_C1 = [];
+C1_docRef.get().then((doc) => {
+  if (doc.exists) {
+    console.log('Document data:', doc.data());
+    data_C1.push(doc.data());
+    console.log(data_C1[0].src);
+    $('#C1評価').attr('src', data_C1[0].src);
+    $('#C1height').val(data_C1[0].height);
+    $('#C1weight').val(data_C1[0].weight);
+    $('#C1sel1').val(data_C1[0].sel1);
+    $('#C1sel2').val(data_C1[0].sel2);
+    $('#C1sel3').val(data_C1[0].sel3);
+    $('#C1sel4').val(data_C1[0].sel4);
+    $('#C1sel5').val(data_C1[0].sel5);
+    $('#C1sel6').val(data_C1[0].sel6);
+    $('#C1sel7').val(data_C1[0].sel7);
+    $('#C1sel8').val(data_C1[0].sel8);
+    $('#C1sel9').val(data_C1[0].sel9);
+    $('#C1sel10').val(data_C1[0].sel10);
+  } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+  }
+}).catch((error) => {
+  console.log('Error getting document:', error);
+  // $('#sel1').value(docRef.data.sel1);
+});
+// ---------------------------------子ども①---------------------------
+// get() を使用して単一のドキュメントの内容を取得する----------子ども②----------------------------
+const C2_docRef = db.collection('family').doc('child2');
+const data_C2 = [];
+C2_docRef.get().then((doc) => {
+  if (doc.exists) {
+    console.log('Document data:', doc.data());
+    data_C2.push(doc.data());
+    console.log(data_C2[0].src);
+    $('#C2評価').attr('src', data_C2[0].src);
+    $('#C2height').val(data_C2[0].height);
+    $('#C2weight').val(data_C2[0].weight);
+    $('#C2sel1').val(data_C2[0].sel1);
+    $('#C2sel2').val(data_C2[0].sel2);
+    $('#C2sel3').val(data_C2[0].sel3);
+    $('#C2sel4').val(data_C2[0].sel4);
+    $('#C2sel5').val(data_C2[0].sel5);
+    $('#C2sel6').val(data_C2[0].sel6);
+    $('#C2sel7').val(data_C2[0].sel7);
+    $('#C2sel8').val(data_C2[0].sel8);
+    $('#C2sel9').val(data_C2[0].sel9);
+    $('#C2sel10').val(data_C2[0].sel10);
+  } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+  }
+}).catch((error) => {
+  console.log('Error getting document:', error);
+  // $('#sel1').value(docRef.data.sel1);
+});
+// ---------------------------------子ども②---------------------------
