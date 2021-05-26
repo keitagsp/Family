@@ -184,3 +184,13 @@ opacity: 100;
   text-decoration: none;
 } 
 /* カレンダーここまで */
+
+/* 掲示板ここから */
+
+.board{
+  position: fixed;
+  top:30px;
+  right: 90px;
+  
+}
+/* 掲示板ここまで */
