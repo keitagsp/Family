@@ -1,3 +1,212 @@
+// 家族合計
+// const family_tatal = family_sumF + family_sumM + family_sumC1 + family_sumC2;
+// console.log(family_tatal);
+
+
+
+
+
+  // saveボタンを押したら合計点を出す---------------------
+  // 質問を一つの配列にする
+  // 文字を数字に変換
+
+// お父さん-----------------------------------------------
+
+$('#Fsave').on('click', function () {
+  const array = [];
+  let i = 1;
+  while (i < 11) {
+    const ans = Number($('#' + `Fsel${i}`).val());
+    // console.log(ans);
+    // console.log(typeof ans);
+    array.push(ans);
+    i++;
+  }
+  // console.log(array);
+
+  // 配列の中身を足し算
+  let sum = 0;
+  let k = 0;
+  while (k < array.length) {
+    sum = sum + array[k];
+    k++;
+  }
+  console.log(sum); //合計点
+
+  // 判定----------------------
+  // 1点〜4点 10門 一番良い 10点 一番悪い 40点
+  
+  if (sum < 13) {
+    console.log('診断5');
+    $('#F評価').children('img').attr('src', '../Family/img/5.svg');
+  } else if (sum < 23) {
+    console.log('診断4');
+    $('#F評価').children('img').attr('src', '../Family/img/4.svg');
+  } else if (sum < 28) {
+    console.log('診断3');
+    $('#F評価').children('img').attr('src', '../Family/img/3.svg');
+  } else if (sum < 35) {
+    console.log('診断2');
+    $('#F評価').children('img').attr('src', '../Family/img/2.svg');
+  } else if (sum < 41) {
+    console.log('診断1');
+    $('#F評価').children('img').attr('src', '../Family/img/1.svg');
+  }
+});
+
+// お母さん-----------------------------------------------
+$('#Msave').on('click', function () {
+  const array = [];
+  let i = 1;
+  while (i < 11) {
+    const ans = Number($('#' + `Msel${i}`).val());
+    // console.log(ans);
+    // console.log(typeof ans);
+    array.push(ans);
+    i++;
+  }
+  // console.log(array);
+
+  // 配列の中身を足し算
+  let sum = 0;
+  let k = 0;
+  while (k < array.length) {
+    sum = sum + array[k];
+    k++;
+  }
+  console.log(sum); //合計点
+  const family_sumF = sum;
+
+  // 判定----------------------
+  // 1点〜4点 10門 一番良い 10点 一番悪い 40点
+  if (sum < 13) {
+    console.log('診断5');
+    $('.評価').children('img').attr('src', '../Family/img/5.svg');
+  } else if (sum < 23) {
+    console.log('診断4');
+    $('.評価').children('img').attr('src', '../Family/img/4.svg');
+  } else if (sum < 28) {
+    console.log('診断3');
+    $('.評価').children('img').attr('src', '../Family/img/3.svg');
+  } else if (sum < 35) {
+    console.log('診断2');
+    $('.評価').children('img').attr('src', '../Family/img/2.svg');
+  } else if (sum < 41) {
+    console.log('診断1');
+    $('.評価').children('img').attr('src', '../Family/img/1.svg');
+  }
+});
+// 子ども1-----------------------------------------------
+$('#C1save').on('click', function () {
+  const array = [];
+  let i = 1;
+  while (i < 11) {
+    const ans = Number($('#' + `C1sel${i}`).val());
+    // console.log(ans);
+    // console.log(typeof ans);
+    array.push(ans);
+    i++;
+  }
+  // console.log(array);
+
+  // 配列の中身を足し算
+  let sum = 0;
+  let k = 0;
+  while (k < array.length) {
+    sum = sum + array[k];
+    k++;
+  }
+  console.log(sum); //合計点
+  const family_sumF = sum;
+
+  // 判定----------------------
+  // 1点〜4点 10門 一番良い 10点 一番悪い 40点
+  if (sum < 13) {
+    console.log('診断5');
+    $('.評価').children('img').attr('src', '../Family/img/5.svg');
+  } else if (sum < 23) {
+    console.log('診断4');
+    $('.評価').children('img').attr('src', '../Family/img/4.svg');
+  } else if (sum < 28) {
+    console.log('診断3');
+    $('.評価').children('img').attr('src', '../Family/img/3.svg');
+  } else if (sum < 35) {
+    console.log('診断2');
+    $('.評価').children('img').attr('src', '../Family/img/2.svg');
+  } else if (sum < 41) {
+    console.log('診断1');
+    $('.評価').children('img').attr('src', '../Family/img/1.svg');
+  }
+});
+// 子ども2-----------------------------------------------
+$('#C2save').on('click', function () {
+  const array = [];
+  let i = 1;
+  while (i < 11) {
+    const ans = Number($('#' + `C2sel${i}`).val());
+    // console.log(ans);
+    // console.log(typeof ans);
+    array.push(ans);
+    i++;
+  }
+  // console.log(array);
+
+  // 配列の中身を足し算
+  let sum = 0;
+  let k = 0;
+  while (k < array.length) {
+    sum = sum + array[k];
+    k++;
+  }
+  console.log(sum); //合計点
+  const family_sumF = sum;
+
+  // 判定----------------------
+  // 1点〜4点 10門 一番良い 10点 一番悪い 40点
+  if (sum < 13) {
+    console.log('診断5');
+    $('.評価').children('img').attr('src', '../Family/img/5.svg');
+  } else if (sum < 23) {
+    console.log('診断4');
+    $('.評価').children('img').attr('src', '../Family/img/4.svg');
+  } else if (sum < 28) {
+    console.log('診断3');
+    $('.評価').children('img').attr('src', '../Family/img/3.svg');
+  } else if (sum < 35) {
+    console.log('診断2');
+    $('.評価').children('img').attr('src', '../Family/img/2.svg');
+  } else if (sum < 41) {
+    console.log('診断1');
+    $('.評価').children('img').attr('src', '../Family/img/1.svg');
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // The core Firebase JS SDK is always required and must be listed first
 
 
@@ -44,21 +253,22 @@ function convertFromFirestoreTimestampToDatetime(timestamp) {
 }
 
 // 送信ボタンを押したら、値をdbに入れる--------------------------
-$('#save').on('click', function () {
+$('#Fsave').on('click', function () {
   // Add a new document in collection "cities"
   db.collection('family').doc('father').set({
-    height: $('#height').val(),
-    weight: $('#weight').val(),
-    sel1: $('#sel1').val(),
-    sel2: $('#sel2').val(),
-    sel3: $('#sel3').val(),
-    sel4: $('#sel4').val(),
-    sel5: $('#sel5').val(),
-    sel6: $('#sel6').val(),
-    sel7: $('#sel7').val(),
-    sel8: $('#sel8').val(),
-    sel9: $('#sel9').val(),
-    sel10: $('#sel10').val(),
+
+    height: $('#Fheight').val(),
+    weight: $('#Fweight').val(),
+    sel1: $('#Fsel1').val(),
+    sel2: $('#Fsel2').val(),
+    sel3: $('#Fsel3').val(),
+    sel4: $('#Fsel4').val(),
+    sel5: $('#Fsel5').val(),
+    sel6: $('#Fsel6').val(),
+    sel7: $('#Fsel7').val(),
+    sel8: $('#Fsel8').val(),
+    sel9: $('#Fsel9').val(),
+    sel10: $('#Fsel10').val(),
     time: firebase.firestore.FieldValue.serverTimestamp(),// 登録日時
   })
     .then(() => {
@@ -77,7 +287,22 @@ docRef.get().then((doc) => {
   if (doc.exists) {
     console.log('Document data:', doc.data());
     data_f.push(doc.data());
-    console.log(data_f[0].sel1);
+    // console.log(data_f[0].Fsel1);
+
+
+    $('#Fheight').val(data_f[0].height);
+    $('#Fweight').val(data_f[0].weight);
+
+    $('#Fsel1').val(data_f[0].sel1);
+    $('#Fsel2').val(data_f[0].sel2);
+    $('#Fsel3').val(data_f[0].sel3);
+    $('#Fsel4').val(data_f[0].sel4);
+    $('#Fsel5').val(data_f[0].sel5);
+    $('#Fsel6').val(data_f[0].sel6);
+    $('#Fsel7').val(data_f[0].sel7);
+    $('#Fsel8').val(data_f[0].sel8);
+    $('#Fsel9').val(data_f[0].sel9);
+    $('#Fsel10').val(data_f[0].sel10);
   } else {
     // doc.data() will be undefined in this case
     console.log('No such document!');
@@ -87,7 +312,6 @@ docRef.get().then((doc) => {
 });
 // $('#sel1').value(docRef.data.sel1);
 
-// $('#sel1').value(data_f[0].sel1);
 
   // const data = {
   //   // nameはfirebaseのフィールド名
