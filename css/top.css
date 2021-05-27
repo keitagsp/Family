@@ -185,12 +185,7 @@ opacity: 100;
 } 
 /* カレンダーここまで */
 
-/* 掲示板ここから */
-
-.board{
-  position: fixed;
-  top:30px;
-  right: 90px;
-  
+.掲示板 a{
+text-decoration: none ;
+color: black;
 }
-/* 掲示板ここまで */
